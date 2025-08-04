@@ -2,7 +2,7 @@ import type { AttachmentPayload } from 'discord.js';
 import { promises as fs } from 'fs';
 import fetch from 'node-fetch';
 import { tmpdir } from 'os';
-import { join, resolve } from 'path';
+import { join } from 'path';
 import { pipeline } from 'stream/promises';
 import { createWriteStream } from 'fs';
 import GIFConverterBase from '../base/GIFConverterBase.js';
@@ -25,14 +25,6 @@ export default class TwitterToGIF extends Converter {
   
   // Generate filename
   const fileName = this.extractFileName();
-  
-  // Save to output directory
-  const outputDir = resolve(process.cwd(), 'output');
-  await fs.mkdir(outputDir, { recursive: true });
-  const outputPath = join(outputDir, fileName);
-  
-  // Copy gif to output directory
-  await fs.copyFile(tempGifPath, outputPath);
   
   const gifBuffer = await fs.readFile(tempGifPath);
   

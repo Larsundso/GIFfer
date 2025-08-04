@@ -1,6 +1,5 @@
 import type { AttachmentPayload } from 'discord.js';
 import { promises as fs } from 'fs';
-import { join, resolve } from 'path';
 import GIFConverterBase from '../base/GIFConverterBase.js';
 import YTConverter from '../base/YTConverter.js';
 
@@ -18,14 +17,6 @@ export default class YTtoGIF extends YTConverter {
 
   const videoId = this.getYouTubeVideoId();
   const fileName = videoId ? `${videoId}.gif` : 'output.gif';
-  
-  // Save to output directory
-  const outputDir = resolve(process.cwd(), 'output');
-  await fs.mkdir(outputDir, { recursive: true });
-  const outputPath = join(outputDir, fileName);
-  
-  // Copy gif to output directory
-  await fs.copyFile(tempGifPath, outputPath);
   
   const gifBuffer = await fs.readFile(tempGifPath);
   await this.cleanup(mp4Path, tempGifPath);
