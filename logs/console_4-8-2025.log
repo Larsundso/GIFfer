@@ -1,0 +1,918 @@
+[11:12:14 1754298734203]
+Ready
+[11:12:14 1754298734222]
+++++++++++++++ Welcome to GIFfer ++++++++++++++++
+[11:12:14 1754298734222]
++      Restart all Clusters with "restart"      +
+[11:12:14 1754298734222]
++                  Arguments:                   +
+[11:12:14 1754298734222]
++   --debug --debug-db --warn --debug-queries   +
+[11:12:14 1754298734222]
++                --silent --dev                 +
+[11:12:14 1754298734222]
++++++++++++++++++++++++++++++++++++++++++++++++++
+[11:12:20 1754298740767]
+convert/to-mp4
+[11:12:21 1754298741994]
+Could not extract functions Error: Could not extract functions
+    at /home/main/Documents/YT-to-GIF/node_modules/.pnpm/ytdl-core@4.11.5/node_modules/ytdl-core/lib/sig.js:20:11
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+[11:14:04 1754298844754]
+Ready
+[11:14:04 1754298844762]
+++++++++++++++ Welcome to GIFfer ++++++++++++++++
+[11:14:04 1754298844762]
++      Restart all Clusters with "restart"      +
+[11:14:04 1754298844762]
++                  Arguments:                   +
+[11:14:04 1754298844762]
++   --debug --debug-db --warn --debug-queries   +
+[11:14:04 1754298844762]
++                --silent --dev                 +
+[11:14:04 1754298844762]
++++++++++++++++++++++++++++++++++++++++++++++++++
+[11:14:07 1754298847825]
+convert/to-mp4
+[11:14:15 1754298855194]
+[11:14:15 1754298855194] [Request] POST /interactions/1401855715236118569/aW50ZXJhY3Rpb246MTQwMTg1NTcxNTIzNjExODU2OTpJd0V4S0lacFRDZTAwMVp2d3lVVHhYcnNaSmh3ZjI5eENUQkhLc3NqcXJuRDM5aDBDRTF4cllocDFEQUkzZUNrTG53QXRyRWl6TW5VN3YyUGhUSklDRm9MZG9zM0JHSUltdGF2T1BFamw3RDJGVFVCNTNrZDRQVGVZb2wzMlZuMQ/callback - [Response] 404 | Not Found
+
+[11:14:15 1754298855202]
+Unknown interaction DiscordAPIError[10062]: Unknown interaction
+    at handleErrors (/home/main/Documents/YT-to-GIF/node_modules/.pnpm/@discordjs+rest@2.5.1/node_modules/@discordjs/rest/src/lib/handlers/Shared.ts:148:10)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at BurstHandler.runRequest (/home/main/Documents/YT-to-GIF/node_modules/.pnpm/@discordjs+rest@2.5.1/node_modules/@discordjs/rest/src/lib/handlers/BurstHandler.ts:144:20)
+    at _REST.request (/home/main/Documents/YT-to-GIF/node_modules/.pnpm/@discordjs+rest@2.5.1/node_modules/@discordjs/rest/src/lib/REST.ts:210:20)
+    at ChatInputCommandInteraction.reply (/home/main/Documents/YT-to-GIF/node_modules/.pnpm/discord.js@14.21.0/node_modules/discord.js/src/structures/interfaces/InteractionResponses.js:200:22)
+    at Module.default (file:///home/main/Documents/YT-to-GIF/src/Commands/SlashCommands/convert/to-mp4.ts:13:2)
+[11:14:51 1754298891870]
+Ready
+[11:14:51 1754298891877]
+++++++++++++++ Welcome to GIFfer ++++++++++++++++
+[11:14:51 1754298891877]
++      Restart all Clusters with "restart"      +
+[11:14:51 1754298891877]
++                  Arguments:                   +
+[11:14:51 1754298891877]
++   --debug --debug-db --warn --debug-queries   +
+[11:14:51 1754298891878]
++                --silent --dev                 +
+[11:14:51 1754298891878]
++++++++++++++++++++++++++++++++++++++++++++++++++
+[11:14:54 1754298894909]
+convert/to-mp4
+[11:15:01 1754298901727]
+[11:15:01 1754298901727] [Request] POST /interactions/1401855912716538019/aW50ZXJhY3Rpb246MTQwMTg1NTkxMjcxNjUzODAxOTpjSkpvR1FUUHdic1hFSXNhWk5RWjc4Vk13VGpjYjBqUU1RWEZUbmlXdFJzUU43Z1ZGbG9ONU1ENTNyVElsOXduNGZkdnZKNXlyUGVOeUFLR0kxWTlDRUNiUDhEOE9sSWZia1Q5emRqV3dsUktuU1hnOHF5alZzVkw3RnVDSWthSA/callback - [Response] 404 | Not Found
+
+[11:15:01 1754298901731]
+Unknown interaction DiscordAPIError[10062]: Unknown interaction
+    at handleErrors (/home/main/Documents/YT-to-GIF/node_modules/.pnpm/@discordjs+rest@2.5.1/node_modules/@discordjs/rest/src/lib/handlers/Shared.ts:148:10)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at BurstHandler.runRequest (/home/main/Documents/YT-to-GIF/node_modules/.pnpm/@discordjs+rest@2.5.1/node_modules/@discordjs/rest/src/lib/handlers/BurstHandler.ts:144:20)
+    at _REST.request (/home/main/Documents/YT-to-GIF/node_modules/.pnpm/@discordjs+rest@2.5.1/node_modules/@discordjs/rest/src/lib/REST.ts:210:20)
+    at ChatInputCommandInteraction.reply (/home/main/Documents/YT-to-GIF/node_modules/.pnpm/discord.js@14.21.0/node_modules/discord.js/src/structures/interfaces/InteractionResponses.js:200:22)
+    at Module.default (file:///home/main/Documents/YT-to-GIF/src/Commands/SlashCommands/convert/to-mp4.ts:13:2)
+[11:15:40 1754298940940]
+Ready
+[11:15:40 1754298940949]
+++++++++++++++ Welcome to GIFfer ++++++++++++++++
+[11:15:40 1754298940949]
++      Restart all Clusters with "restart"      +
+[11:15:40 1754298940949]
++                  Arguments:                   +
+[11:15:40 1754298940949]
++   --debug --debug-db --warn --debug-queries   +
+[11:15:40 1754298940949]
++                --silent --dev                 +
+[11:15:40 1754298940949]
++++++++++++++++++++++++++++++++++++++++++++++++++
+[11:15:40 1754298940954]
+[DEBUG] Debug mode enabled
+[11:15:40 1754298940954]
+[DEBUG] Debug mode for database enabled
+[11:15:40 1754298940954]
+[DEBUG] Warn mode enabled
+[11:15:41 1754298941569]
+[WS => Shard 0] First heartbeat sent, starting to beat every 41250ms
+[11:15:41 1754298941686]
+[WS => Shard 0] Heartbeat acknowledged, latency of 117ms.
+[11:15:44 1754298944901]
+convert/to-mp4
+[11:15:45 1754298945258]
+[11:15:45 1754298945258] [Request] POST /interactions/1401856122373144619/aW50ZXJhY3Rpb246MTQwMTg1NjEyMjM3MzE0NDYxOTo4bEw1RGQ5SFV2NkhBbURRNVZyQ3FJemVUbTdGckNsYTM4MVJJTEpaS0toY0NhZWlLTXhtS0Zud1lqSlRwMlAwSU1zd29obEphM0phQnNjU3BKbzlxd1NhMzBxbzUzekczWGJaMlRJUDhXM0cyVUJPbmJYdFBDbUtwbDltc042cA/callback - [Response] 204 | No Content
+
+[11:15:51 1754298951370]
+[11:15:51 1754298951369] [Request] POST /webhooks/1400799184730194093/aW50ZXJhY3Rpb246MTQwMTg1NjEyMjM3MzE0NDYxOTo4bEw1RGQ5SFV2NkhBbURRNVZyQ3FJemVUbTdGckNsYTM4MVJJTEpaS0toY0NhZWlLTXhtS0Zud1lqSlRwMlAwSU1zd29obEphM0phQnNjU3BKbzlxd1NhMzBxbzUzekczWGJaMlRJUDhXM0cyVUJPbmJYdFBDbUtwbDltc042cA - [Response] 200 | OK
+
+[11:15:51 1754298951371]
+[11:15:51 1754298951371] [Rest Debug] [REST Global(POST:/webhooks/:id/:token):1400799184730194093/aW50ZXJhY3Rpb246MTQwMTg1NjEyMjM3MzE0NDYxOTo4bEw1RGQ5SFV2NkhBbURRNVZyQ3FJemVUbTdGckNsYTM4MVJJTEpaS0toY0NhZWlLTXhtS0Zud1lqSlRwMlAwSU1zd29obEphM0phQnNjU3BKbzlxd1NhMzBxbzUzekczWGJaMlRJUDhXM0cyVUJPbmJYdFBDbUtwbDltc042cA] Received bucket hash update
+  Old Hash  : Global(POST:/webhooks/:id/:token)
+  New Hash  : 3d2712a9e4fe17cc9d3fed4a8e672e5f
+
+[11:16:22 1754298982956]
+[WS => Shard 0] Heartbeat acknowledged, latency of 125ms.
+[11:17:04 1754299024223]
+[WS => Shard 0] Heartbeat acknowledged, latency of 118ms.
+[11:17:45 1754299065478]
+[WS => Shard 0] Heartbeat acknowledged, latency of 118ms.
+[11:18:26 1754299106760]
+[WS => Shard 0] Heartbeat acknowledged, latency of 118ms.
+[11:19:08 1754299148037]
+[WS => Shard 0] Heartbeat acknowledged, latency of 118ms.
+[11:19:49 1754299189305]
+[WS => Shard 0] Heartbeat acknowledged, latency of 127ms.
+[11:20:00 1754299200012]
+=> Current Date: 04/08/2025, 11:20:00
+[11:20:30 1754299230584]
+[WS => Shard 0] Heartbeat acknowledged, latency of 126ms.
+[11:21:11 1754299271840]
+[WS => Shard 0] Heartbeat acknowledged, latency of 125ms.
+[11:21:53 1754299313095]
+[WS => Shard 0] Heartbeat acknowledged, latency of 119ms.
+[11:22:34 1754299354386]
+[WS => Shard 0] Heartbeat acknowledged, latency of 119ms.
+[11:23:15 1754299395673]
+[WS => Shard 0] Heartbeat acknowledged, latency of 121ms.
+[11:23:56 1754299436938]
+[WS => Shard 0] Heartbeat acknowledged, latency of 120ms.
+[11:24:38 1754299478229]
+[WS => Shard 0] Heartbeat acknowledged, latency of 120ms.
+[11:25:19 1754299519516]
+[WS => Shard 0] Heartbeat acknowledged, latency of 118ms.
+[11:26:00 1754299560784]
+[WS => Shard 0] Heartbeat acknowledged, latency of 116ms.
+[11:26:21 1754299581209]
+Ready
+[11:26:21 1754299581216]
+++++++++++++++ Welcome to GIFfer ++++++++++++++++
+[11:26:21 1754299581216]
++      Restart all Clusters with "restart"      +
+[11:26:21 1754299581216]
++                  Arguments:                   +
+[11:26:21 1754299581216]
++   --debug --debug-db --warn --debug-queries   +
+[11:26:21 1754299581216]
++                --silent --dev                 +
+[11:26:21 1754299581216]
++++++++++++++++++++++++++++++++++++++++++++++++++
+[11:26:21 1754299581221]
+[DEBUG] Debug mode enabled
+[11:26:21 1754299581221]
+[DEBUG] Debug mode for database enabled
+[11:26:21 1754299581221]
+[DEBUG] Warn mode enabled
+[11:26:36 1754299596001]
+[WS => Shard 0] First heartbeat sent, starting to beat every 41250ms
+[11:26:36 1754299596116]
+[WS => Shard 0] Heartbeat acknowledged, latency of 115ms.
+[11:26:37 1754299597915]
+convert/to-mp4
+[11:26:38 1754299598272]
+[11:26:38 1754299598272] [Request] POST /interactions/1401858861316444190/aW50ZXJhY3Rpb246MTQwMTg1ODg2MTMxNjQ0NDE5MDplbWZ3RWJLOEttMGZPOTNTOHZCenJLa2kzRmtBbHQycHVTOGJST2dqSU03WTBVZzJ4eXNpNTFyRzN4MTgyN2tibThOVDZ2bWFCWmNobmkzQU9FcFNKTjZIdEdlWnVyc21Kc0R3WU1uQ08zQ2owNzI3UERRRG5pU3JPS3A2QWpTSA/callback - [Response] 204 | No Content
+
+[11:26:44 1754299604764]
+[11:26:44 1754299604763] [Request] POST /webhooks/1400799184730194093/aW50ZXJhY3Rpb246MTQwMTg1ODg2MTMxNjQ0NDE5MDplbWZ3RWJLOEttMGZPOTNTOHZCenJLa2kzRmtBbHQycHVTOGJST2dqSU03WTBVZzJ4eXNpNTFyRzN4MTgyN2tibThOVDZ2bWFCWmNobmkzQU9FcFNKTjZIdEdlWnVyc21Kc0R3WU1uQ08zQ2owNzI3UERRRG5pU3JPS3A2QWpTSA - [Response] 200 | OK
+
+[11:26:44 1754299604765]
+[11:26:44 1754299604765] [Rest Debug] [REST Global(POST:/webhooks/:id/:token):1400799184730194093/aW50ZXJhY3Rpb246MTQwMTg1ODg2MTMxNjQ0NDE5MDplbWZ3RWJLOEttMGZPOTNTOHZCenJLa2kzRmtBbHQycHVTOGJST2dqSU03WTBVZzJ4eXNpNTFyRzN4MTgyN2tibThOVDZ2bWFCWmNobmkzQU9FcFNKTjZIdEdlWnVyc21Kc0R3WU1uQ08zQ2owNzI3UERRRG5pU3JPS3A2QWpTSA] Received bucket hash update
+  Old Hash  : Global(POST:/webhooks/:id/:token)
+  New Hash  : 3d2712a9e4fe17cc9d3fed4a8e672e5f
+
+[11:26:59 1754299619441]
+convert/to-mp4
+[11:26:59 1754299619680]
+The reply to this interaction has not been sent or deferred. Error [InteractionNotReplied]: The reply to this interaction has not been sent or deferred.
+    at ChatInputCommandInteraction.followUp (/home/main/Documents/YT-to-GIF/node_modules/.pnpm/discord.js@14.21.0/node_modules/discord.js/src/structures/interfaces/InteractionResponses.js:282:48)
+    at file:///home/main/Documents/YT-to-GIF/src/Commands/SlashCommands/convert/to-mp4.ts:13:59
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at Module.default (file:///home/main/Documents/YT-to-GIF/src/Commands/SlashCommands/convert/to-mp4.ts:13:2)
+[11:26:59 1754299619811]
+[11:26:59 1754299619811] [Request] POST /interactions/1401858951586517062/aW50ZXJhY3Rpb246MTQwMTg1ODk1MTU4NjUxNzA2MjpSVjdlOW9zMDZyRmI5YW5iNHZVOEs3QjhaV3VmOWZMYXdJODdOSnUxWm84TTR1YXlZV2k5bUFPR0E2Nk9LSXZSTU9PTG9lNXJqUWN0MWFndGRQOXRiSm44eE9CWk5EdGJldTNWd0pHRE1zdUJGOTcwWUg4QlFnZHRlQTRiMGlBMg/callback - [Response] 204 | No Content
+
+[11:27:16 1754299636075]
+Ready
+[11:27:16 1754299636082]
+++++++++++++++ Welcome to GIFfer ++++++++++++++++
+[11:27:16 1754299636083]
++      Restart all Clusters with "restart"      +
+[11:27:16 1754299636083]
++                  Arguments:                   +
+[11:27:16 1754299636083]
++   --debug --debug-db --warn --debug-queries   +
+[11:27:16 1754299636083]
++                --silent --dev                 +
+[11:27:16 1754299636083]
++++++++++++++++++++++++++++++++++++++++++++++++++
+[11:27:16 1754299636087]
+[DEBUG] Debug mode enabled
+[11:27:16 1754299636087]
+[DEBUG] Debug mode for database enabled
+[11:27:16 1754299636087]
+[DEBUG] Warn mode enabled
+[11:27:17 1754299637828]
+convert/to-mp4
+[11:27:18 1754299638161]
+[11:27:18 1754299638161] [Request] POST /interactions/1401859028685946972/aW50ZXJhY3Rpb246MTQwMTg1OTAyODY4NTk0Njk3Mjp4YTVZT0NKQWQ0b01lRWw2OHNXNENvWkpwQ3A1R21YV3hoMTlsNzFOU3FnSnJPV1pqUno1eHZlMXc3RU1iTnk1Z0dVUFl6TU4zU2w1NVU5OTBXYzlnZUJMdlFPZUx5ZnlkZG5xa0FuaEVaWU5vUU0yc3FrOUducWNXcE0yWTZvZw/callback - [Response] 204 | No Content
+
+[11:27:21 1754299641891]
+[11:27:21 1754299641891] [Request] POST /webhooks/1400799184730194093/aW50ZXJhY3Rpb246MTQwMTg1OTAyODY4NTk0Njk3Mjp4YTVZT0NKQWQ0b01lRWw2OHNXNENvWkpwQ3A1R21YV3hoMTlsNzFOU3FnSnJPV1pqUno1eHZlMXc3RU1iTnk1Z0dVUFl6TU4zU2w1NVU5OTBXYzlnZUJMdlFPZUx5ZnlkZG5xa0FuaEVaWU5vUU0yc3FrOUducWNXcE0yWTZvZw - [Response] 200 | OK
+
+[11:27:21 1754299641893]
+[11:27:21 1754299641893] [Rest Debug] [REST Global(POST:/webhooks/:id/:token):1400799184730194093/aW50ZXJhY3Rpb246MTQwMTg1OTAyODY4NTk0Njk3Mjp4YTVZT0NKQWQ0b01lRWw2OHNXNENvWkpwQ3A1R21YV3hoMTlsNzFOU3FnSnJPV1pqUno1eHZlMXc3RU1iTnk1Z0dVUFl6TU4zU2w1NVU5OTBXYzlnZUJMdlFPZUx5ZnlkZG5xa0FuaEVaWU5vUU0yc3FrOUducWNXcE0yWTZvZw] Received bucket hash update
+  Old Hash  : Global(POST:/webhooks/:id/:token)
+  New Hash  : 3d2712a9e4fe17cc9d3fed4a8e672e5f
+
+[11:27:33 1754299653124]
+[WS => Shard 0] First heartbeat sent, starting to beat every 41250ms
+[11:27:33 1754299653241]
+[WS => Shard 0] Heartbeat acknowledged, latency of 117ms.
+[11:27:53 1754299673611]
+convert/to-gif
+[11:27:53 1754299673911]
+[11:27:53 1754299673910] [Request] POST /interactions/1401859178149974046/aW50ZXJhY3Rpb246MTQwMTg1OTE3ODE0OTk3NDA0NjpkNnZnTnlFeTdWRng1dkI4SmJhRnFpa3JBbUZkaHhybkVueGVjNjVBUUc3dDRNSjNxQ09yOEpnWllSM3Bpb0pKcnB3Qk5QRUtsOGFVdVdVa0l3c3VVVjZqaWFINXdSRktpelh6VUZhSXFlT3ZFNm0wTkZLWDN6Z0taOW5Mc3lZUw/callback - [Response] 204 | No Content
+
+[11:28:14 1754299694496]
+[WS => Shard 0] Heartbeat acknowledged, latency of 122ms.
+[11:28:55 1754299735747]
+[WS => Shard 0] Heartbeat acknowledged, latency of 124ms.
+[11:29:37 1754299777011]
+[WS => Shard 0] Heartbeat acknowledged, latency of 138ms.
+[11:29:42 1754299782610]
+This operation was aborted AbortError: This operation was aborted
+    at new DOMException (node:internal/per_context/domexception:53:5)
+    at AbortController.abort (node:internal/abort_controller:506:18)
+    at Timeout.<anonymous> (/home/main/Documents/YT-to-GIF/node_modules/.pnpm/@discordjs+rest@2.5.1/node_modules/@discordjs/rest/src/lib/handlers/Shared.ts:66:46)
+    at listOnTimeout (node:internal/timers:608:17)
+    at processTimers (node:internal/timers:543:7)
+[11:30:00 1754299800016]
+=> Current Date: 04/08/2025, 11:30:00
+[11:30:18 1754299818248]
+[WS => Shard 0] Heartbeat acknowledged, latency of 123ms.
+[11:30:59 1754299859535]
+[WS => Shard 0] Heartbeat acknowledged, latency of 118ms.
+[11:31:38 1754299898907]
+Ready
+[11:31:38 1754299898915]
+++++++++++++++ Welcome to GIFfer ++++++++++++++++
+[11:31:38 1754299898915]
++      Restart all Clusters with "restart"      +
+[11:31:38 1754299898915]
++                  Arguments:                   +
+[11:31:38 1754299898915]
++   --debug --debug-db --warn --debug-queries   +
+[11:31:38 1754299898915]
++                --silent --dev                 +
+[11:31:38 1754299898915]
++++++++++++++++++++++++++++++++++++++++++++++++++
+[11:31:38 1754299898920]
+[DEBUG] Debug mode enabled
+[11:31:38 1754299898920]
+[DEBUG] Debug mode for database enabled
+[11:31:38 1754299898920]
+[DEBUG] Warn mode enabled
+[11:31:40 1754299900804]
+convert/to-gif
+[11:31:41 1754299901103]
+[11:31:41 1754299901103] [Request] POST /interactions/1401860131058356360/aW50ZXJhY3Rpb246MTQwMTg2MDEzMTA1ODM1NjM2MDpkN2FqWjYyRUp3akhWdHU4SDJ5TkhGb1Q0NXk2NndCTEljb2xLSVNMNHo3S21HWVBadzhqMnFHZ3l6dG5RNXEyUzBPZDZxQ2RPMXNrUnJWRVB6T1d6aEhUdnpPN2x0ZHdpTzE5WUd5MnFCSEZVSHZkUlF5Sko5ZjVqRWZSUUVGaw/callback - [Response] 204 | No Content
+
+[11:31:53 1754299913803]
+[WS => Shard 0] First heartbeat sent, starting to beat every 41250ms
+[11:31:53 1754299913931]
+[WS => Shard 0] Heartbeat acknowledged, latency of 129ms.
+[11:32:35 1754299955174]
+[WS => Shard 0] Heartbeat acknowledged, latency of 121ms.
+[11:33:16 1754299996433]
+[WS => Shard 0] Heartbeat acknowledged, latency of 129ms.
+[11:33:28 1754300008068]
+This operation was aborted AbortError: This operation was aborted
+    at new DOMException (node:internal/per_context/domexception:53:5)
+    at AbortController.abort (node:internal/abort_controller:506:18)
+    at Timeout.<anonymous> (/home/main/Documents/YT-to-GIF/node_modules/.pnpm/@discordjs+rest@2.5.1/node_modules/@discordjs/rest/src/lib/handlers/Shared.ts:66:46)
+    at listOnTimeout (node:internal/timers:608:17)
+    at processTimers (node:internal/timers:543:7)
+[11:33:57 1754300037690]
+[WS => Shard 0] Heartbeat acknowledged, latency of 118ms.
+[11:34:38 1754300078942]
+[WS => Shard 0] Heartbeat acknowledged, latency of 119ms.
+[11:35:20 1754300120232]
+[WS => Shard 0] Heartbeat acknowledged, latency of 118ms.
+[11:36:01 1754300161508]
+[WS => Shard 0] Heartbeat acknowledged, latency of 121ms.
+[11:36:42 1754300202760]
+[WS => Shard 0] Heartbeat acknowledged, latency of 118ms.
+[11:37:24 1754300244056]
+[WS => Shard 0] Heartbeat acknowledged, latency of 124ms.
+[11:38:05 1754300285329]
+[WS => Shard 0] Heartbeat acknowledged, latency of 120ms.
+[11:38:46 1754300326590]
+[WS => Shard 0] Heartbeat acknowledged, latency of 123ms.
+[11:39:27 1754300367888]
+[WS => Shard 0] Heartbeat acknowledged, latency of 130ms.
+[11:40:00 1754300400020]
+=> Current Date: 04/08/2025, 11:40:00
+[11:40:09 1754300409141]
+[WS => Shard 0] Heartbeat acknowledged, latency of 124ms.
+[11:40:50 1754300450417]
+[WS => Shard 0] Heartbeat acknowledged, latency of 138ms.
+[11:41:31 1754300491702]
+[WS => Shard 0] Heartbeat acknowledged, latency of 132ms.
+[11:42:09 1754300529608]
+Ready
+[11:42:09 1754300529615]
+++++++++++++++ Welcome to GIFfer ++++++++++++++++
+[11:42:09 1754300529615]
++      Restart all Clusters with "restart"      +
+[11:42:09 1754300529615]
++                  Arguments:                   +
+[11:42:09 1754300529615]
++   --debug --debug-db --warn --debug-queries   +
+[11:42:09 1754300529616]
++                --silent --dev                 +
+[11:42:09 1754300529616]
++++++++++++++++++++++++++++++++++++++++++++++++++
+[11:42:09 1754300529621]
+[DEBUG] Debug mode enabled
+[11:42:09 1754300529621]
+[DEBUG] Debug mode for database enabled
+[11:42:09 1754300529621]
+[DEBUG] Warn mode enabled
+[11:42:20 1754300540138]
+convert/to-gif
+[11:42:20 1754300540484]
+[11:42:20 1754300540484] [Request] POST /interactions/1401862813303181523/aW50ZXJhY3Rpb246MTQwMTg2MjgxMzMwMzE4MTUyMzp0clE3SmxqOFBXd1pGVTFJT3lFZVNIUlBOYk1zSDF3VEdZNzEycFladmJUR1lnQVgwVHhXUWVhaUJWRVBYZ1pXUnBZY2tzckY0UnN3RzM2VllDclNqMFNycmt1VlROOHgyd2wwWXliYVVib0NZQnpzRTlOSzlHZWpCVVpzN3oyaw/callback - [Response] 204 | No Content
+
+[11:42:32 1754300552355]
+[WS => Shard 0] First heartbeat sent, starting to beat every 41250ms
+[11:42:32 1754300552473]
+[WS => Shard 0] Heartbeat acknowledged, latency of 119ms.
+[11:43:13 1754300593735]
+[WS => Shard 0] Heartbeat acknowledged, latency of 129ms.
+[11:43:44 1754300624145]
+This operation was aborted AbortError: This operation was aborted
+    at new DOMException (node:internal/per_context/domexception:53:5)
+    at AbortController.abort (node:internal/abort_controller:506:18)
+    at Timeout.<anonymous> (/home/main/Documents/YT-to-GIF/node_modules/.pnpm/@discordjs+rest@2.5.1/node_modules/@discordjs/rest/src/lib/handlers/Shared.ts:66:46)
+    at listOnTimeout (node:internal/timers:608:17)
+    at processTimers (node:internal/timers:543:7)
+[11:43:54 1754300634986]
+[WS => Shard 0] Heartbeat acknowledged, latency of 124ms.
+[11:44:36 1754300676257]
+[WS => Shard 0] Heartbeat acknowledged, latency of 118ms.
+[11:44:57 1754300697677]
+Ready
+[11:44:57 1754300697685]
+++++++++++++++ Welcome to GIFfer ++++++++++++++++
+[11:44:57 1754300697685]
++      Restart all Clusters with "restart"      +
+[11:44:57 1754300697685]
++                  Arguments:                   +
+[11:44:57 1754300697685]
++   --debug --debug-db --warn --debug-queries   +
+[11:44:57 1754300697685]
++                --silent --dev                 +
+[11:44:57 1754300697685]
++++++++++++++++++++++++++++++++++++++++++++++++++
+[11:44:57 1754300697692]
+[DEBUG] Debug mode enabled
+[11:44:57 1754300697692]
+[DEBUG] Debug mode for database enabled
+[11:44:57 1754300697692]
+[DEBUG] Warn mode enabled
+[11:45:13 1754300713964]
+convert/to-gif
+[11:45:14 1754300714350]
+[11:45:14 1754300714350] [Request] POST /interactions/1401863542264561665/aW50ZXJhY3Rpb246MTQwMTg2MzU0MjI2NDU2MTY2NTpqYTFVUWF4eXlhaEs3bURKWWZ2eklySHA4Q2NsbGlNckpkbDc0cmczVlh1MlVvaFFzRmRNMUVLRlhXbnpnTkFOZVIwbUNLU0xVRXJDVWFobkEyQ0lEMjd5dXpCMUR0T1ZKd1NHTGVkQ0JIclE2cG96R0l0U3FOWjFmZVhOeWRLcQ/callback - [Response] 204 | No Content
+
+[11:45:25 1754300725140]
+[WS => Shard 0] First heartbeat sent, starting to beat every 41250ms
+[11:45:25 1754300725257]
+[WS => Shard 0] Heartbeat acknowledged, latency of 117ms.
+[11:45:37 1754300737240]
+Generated GIF at 800x600, quality 90%: 95.35MB
+[11:45:55 1754300755204]
+Generated GIF at 640x480, quality 85%: 86.63MB
+[11:46:06 1754300766515]
+[WS => Shard 0] Heartbeat acknowledged, latency of 123ms.
+[11:46:09 1754300769912]
+Generated GIF at 480x360, quality 80%: 65.67MB
+[11:46:20 1754300780010]
+Generated GIF at 320x240, quality 75%: 30.82MB
+[11:46:30 1754300790754]
+[11:46:30 1754300790753] [Request] POST /webhooks/1400799184730194093/aW50ZXJhY3Rpb246MTQwMTg2MzU0MjI2NDU2MTY2NTpqYTFVUWF4eXlhaEs3bURKWWZ2eklySHA4Q2NsbGlNckpkbDc0cmczVlh1MlVvaFFzRmRNMUVLRlhXbnpnTkFOZVIwbUNLU0xVRXJDVWFobkEyQ0lEMjd5dXpCMUR0T1ZKd1NHTGVkQ0JIclE2cG96R0l0U3FOWjFmZVhOeWRLcQ - [Response] 200 | OK
+
+[11:46:30 1754300790755]
+[11:46:30 1754300790755] [Rest Debug] [REST Global(POST:/webhooks/:id/:token):1400799184730194093/aW50ZXJhY3Rpb246MTQwMTg2MzU0MjI2NDU2MTY2NTpqYTFVUWF4eXlhaEs3bURKWWZ2eklySHA4Q2NsbGlNckpkbDc0cmczVlh1MlVvaFFzRmRNMUVLRlhXbnpnTkFOZVIwbUNLU0xVRXJDVWFobkEyQ0lEMjd5dXpCMUR0T1ZKd1NHTGVkQ0JIclE2cG96R0l0U3FOWjFmZVhOeWRLcQ] Received bucket hash update
+  Old Hash  : Global(POST:/webhooks/:id/:token)
+  New Hash  : 3d2712a9e4fe17cc9d3fed4a8e672e5f
+
+[11:46:47 1754300807771]
+[WS => Shard 0] Heartbeat acknowledged, latency of 118ms.
+[11:47:29 1754300849054]
+[WS => Shard 0] Heartbeat acknowledged, latency of 119ms.
+[11:48:10 1754300890315]
+[WS => Shard 0] Heartbeat acknowledged, latency of 117ms.
+[11:48:39 1754300919644]
+Ready
+[11:48:39 1754300919651]
+++++++++++++++ Welcome to GIFfer ++++++++++++++++
+[11:48:39 1754300919651]
++      Restart all Clusters with "restart"      +
+[11:48:39 1754300919652]
++                  Arguments:                   +
+[11:48:39 1754300919652]
++   --debug --debug-db --warn --debug-queries   +
+[11:48:39 1754300919652]
++                --silent --dev                 +
+[11:48:39 1754300919652]
++++++++++++++++++++++++++++++++++++++++++++++++++
+[11:48:39 1754300919656]
+[DEBUG] Debug mode enabled
+[11:48:39 1754300919656]
+[DEBUG] Debug mode for database enabled
+[11:48:39 1754300919656]
+[DEBUG] Warn mode enabled
+[11:48:44 1754300924220]
+[WS => Shard 0] First heartbeat sent, starting to beat every 41250ms
+[11:48:44 1754300924333]
+[WS => Shard 0] Heartbeat acknowledged, latency of 113ms.
+[11:49:01 1754300941133]
+convert/to-gif
+[11:49:01 1754300941477]
+[11:49:01 1754300941477] [Request] POST /interactions/1401864494984200252/aW50ZXJhY3Rpb246MTQwMTg2NDQ5NDk4NDIwMDI1Mjo4OUEzZ083T0hOeHhjaElsZUVqSWtzWThCaDV1NVBpM3FaMzNKQm1IZW1UdjdSVnpjNENmRjFWc2VXOWhoSnFGU2VuTUZZbWJWejNiOFBGWXVmeU4ySTI0UDhWUk80QVhaUXhJOFFpTmtJNFAyaXR5MFRuV2MxbWxOTW1Kcm9RdA/callback - [Response] 204 | No Content
+
+[11:49:25 1754300965188]
+Generated GIF with max width 800px, quality 90%: 95.35MB
+[11:49:25 1754300965595]
+[WS => Shard 0] Heartbeat acknowledged, latency of 126ms.
+[11:49:43 1754300983324]
+Generated GIF with max width 640px, quality 85%: 86.63MB
+[11:49:55 1754300995492]
+Generated GIF with max width 480px, quality 80%: 50.94MB
+[11:50:00 1754301000003]
+=> Current Date: 04/08/2025, 11:50:00
+[11:50:01 1754301001788]
+Generated GIF with max width 320px, quality 75%: 24.31MB
+[11:50:06 1754301006846]
+[WS => Shard 0] Heartbeat acknowledged, latency of 126ms.
+[11:50:10 1754301010000]
+[11:50:10 1754301010000] [Request] POST /webhooks/1400799184730194093/aW50ZXJhY3Rpb246MTQwMTg2NDQ5NDk4NDIwMDI1Mjo4OUEzZ083T0hOeHhjaElsZUVqSWtzWThCaDV1NVBpM3FaMzNKQm1IZW1UdjdSVnpjNENmRjFWc2VXOWhoSnFGU2VuTUZZbWJWejNiOFBGWXVmeU4ySTI0UDhWUk80QVhaUXhJOFFpTmtJNFAyaXR5MFRuV2MxbWxOTW1Kcm9RdA - [Response] 200 | OK
+
+[11:50:10 1754301010002]
+[11:50:10 1754301010002] [Rest Debug] [REST Global(POST:/webhooks/:id/:token):1400799184730194093/aW50ZXJhY3Rpb246MTQwMTg2NDQ5NDk4NDIwMDI1Mjo4OUEzZ083T0hOeHhjaElsZUVqSWtzWThCaDV1NVBpM3FaMzNKQm1IZW1UdjdSVnpjNENmRjFWc2VXOWhoSnFGU2VuTUZZbWJWejNiOFBGWXVmeU4ySTI0UDhWUk80QVhaUXhJOFFpTmtJNFAyaXR5MFRuV2MxbWxOTW1Kcm9RdA] Received bucket hash update
+  Old Hash  : Global(POST:/webhooks/:id/:token)
+  New Hash  : 3d2712a9e4fe17cc9d3fed4a8e672e5f
+
+[11:50:48 1754301048103]
+[WS => Shard 0] Heartbeat acknowledged, latency of 124ms.
+[11:51:29 1754301089388]
+[WS => Shard 0] Heartbeat acknowledged, latency of 117ms.
+[11:52:10 1754301130669]
+[WS => Shard 0] Heartbeat acknowledged, latency of 117ms.
+[11:52:51 1754301171932]
+[WS => Shard 0] Heartbeat acknowledged, latency of 118ms.
+[11:53:33 1754301213223]
+[WS => Shard 0] Heartbeat acknowledged, latency of 118ms.
+[11:54:02 1754301242883]
+Ready
+[11:54:02 1754301242891]
+++++++++++++++ Welcome to GIFfer ++++++++++++++++
+[11:54:02 1754301242891]
++      Restart all Clusters with "restart"      +
+[11:54:02 1754301242891]
++                  Arguments:                   +
+[11:54:02 1754301242891]
++   --debug --debug-db --warn --debug-queries   +
+[11:54:02 1754301242891]
++                --silent --dev                 +
+[11:54:02 1754301242891]
++++++++++++++++++++++++++++++++++++++++++++++++++
+[11:54:02 1754301242896]
+[DEBUG] Debug mode enabled
+[11:54:02 1754301242896]
+[DEBUG] Debug mode for database enabled
+[11:54:02 1754301242896]
+[DEBUG] Warn mode enabled
+[11:54:06 1754301246518]
+convert/to-gif
+[11:54:06 1754301246909]
+[11:54:06 1754301246909] [Request] POST /interactions/1401865775941423205/aW50ZXJhY3Rpb246MTQwMTg2NTc3NTk0MTQyMzIwNTo1MHRYdmNtMXRMNTJJWUQzbkhTR1kwcFdSendqTHlVSUhIVDRzYUpRaXMyYTd3V1BnTG1FVGdMYWx0TWFhTzJXWnREZ2l1enFJekl6T0w4ekc4eGNDY096dkpBNGZYUVNlY3ZvZGtKYTk3U2pSYzZEQmRVZjRqckx6dncxUFlnNA/callback - [Response] 204 | No Content
+
+[11:54:30 1754301270036]
+Generated GIF: 800px width, 90% quality, 30fps: 95.35MB
+[11:54:42 1754301282452]
+[WS => Shard 0] First heartbeat sent, starting to beat every 41250ms
+[11:54:42 1754301282573]
+[WS => Shard 0] Heartbeat acknowledged, latency of 121ms.
+[11:54:48 1754301288894]
+Generated GIF: 640px width, 85% quality, 30fps: 86.63MB
+[11:55:01 1754301301472]
+Generated GIF: 480px width, 80% quality, 30fps: 50.94MB
+[11:55:01 1754301301475]
+File close to limit, trying quality adjustment: 75%
+[11:55:08 1754301308547]
+Adjusted GIF: 480px width, 75% quality: 45.09MB
+[11:55:23 1754301323393]
+[11:55:23 1754301323393] [Request] POST /webhooks/1400799184730194093/aW50ZXJhY3Rpb246MTQwMTg2NTc3NTk0MTQyMzIwNTo1MHRYdmNtMXRMNTJJWUQzbkhTR1kwcFdSendqTHlVSUhIVDRzYUpRaXMyYTd3V1BnTG1FVGdMYWx0TWFhTzJXWnREZ2l1enFJekl6T0w4ekc4eGNDY096dkpBNGZYUVNlY3ZvZGtKYTk3U2pSYzZEQmRVZjRqckx6dncxUFlnNA - [Response] 200 | OK
+
+[11:55:23 1754301323395]
+[11:55:23 1754301323395] [Rest Debug] [REST Global(POST:/webhooks/:id/:token):1400799184730194093/aW50ZXJhY3Rpb246MTQwMTg2NTc3NTk0MTQyMzIwNTo1MHRYdmNtMXRMNTJJWUQzbkhTR1kwcFdSendqTHlVSUhIVDRzYUpRaXMyYTd3V1BnTG1FVGdMYWx0TWFhTzJXWnREZ2l1enFJekl6T0w4ekc4eGNDY096dkpBNGZYUVNlY3ZvZGtKYTk3U2pSYzZEQmRVZjRqckx6dncxUFlnNA] Received bucket hash update
+  Old Hash  : Global(POST:/webhooks/:id/:token)
+  New Hash  : 3d2712a9e4fe17cc9d3fed4a8e672e5f
+
+[11:55:23 1754301323830]
+[WS => Shard 0] Heartbeat acknowledged, latency of 129ms.
+[11:56:05 1754301365072]
+[WS => Shard 0] Heartbeat acknowledged, latency of 119ms.
+[11:56:46 1754301406360]
+[WS => Shard 0] Heartbeat acknowledged, latency of 116ms.
+[11:57:27 1754301447638]
+[WS => Shard 0] Heartbeat acknowledged, latency of 119ms.
+[11:57:55 1754301475540]
+Ready
+[11:57:55 1754301475547]
+++++++++++++++ Welcome to GIFfer ++++++++++++++++
+[11:57:55 1754301475547]
++      Restart all Clusters with "restart"      +
+[11:57:55 1754301475547]
++                  Arguments:                   +
+[11:57:55 1754301475547]
++   --debug --debug-db --warn --debug-queries   +
+[11:57:55 1754301475547]
++                --silent --dev                 +
+[11:57:55 1754301475547]
++++++++++++++++++++++++++++++++++++++++++++++++++
+[11:57:55 1754301475551]
+[DEBUG] Debug mode enabled
+[11:57:55 1754301475551]
+[DEBUG] Debug mode for database enabled
+[11:57:55 1754301475551]
+[DEBUG] Warn mode enabled
+[11:57:59 1754301479461]
+[WS => Shard 0] First heartbeat sent, starting to beat every 41250ms
+[11:57:59 1754301479576]
+[WS => Shard 0] Heartbeat acknowledged, latency of 116ms.
+[11:57:59 1754301479839]
+convert/to-gif
+[11:58:00 1754301480356]
+[11:58:00 1754301480356] [Request] POST /interactions/1401866754468352021/aW50ZXJhY3Rpb246MTQwMTg2Njc1NDQ2ODM1MjAyMTpjMldORW8wZlcxandmTEgxWk52SWJMc1ljMGp3bXo3TzNZWHYyS0FLMnM3eHNOYjVnU0E4eEZ3d0gybktYYnVBUGU0Um1SOHZwVVREQXVtdWRHQ1M4UERtWWg3QWpPeTJqYmprYW9XM0NpU1JEcFNzUktMSXJCSkppVUE0a2dlcw/callback - [Response] 204 | No Content
+
+[11:58:22 1754301502669]
+Generated GIF: 800px width, 90% quality, 30fps: 95.35MB
+[11:58:40 1754301520832]
+[WS => Shard 0] Heartbeat acknowledged, latency of 121ms.
+[11:59:22 1754301562083]
+[WS => Shard 0] Heartbeat acknowledged, latency of 122ms.
+[11:59:22 1754301562788]
+This operation was aborted AbortError: This operation was aborted
+    at new DOMException (node:internal/per_context/domexception:53:5)
+    at AbortController.abort (node:internal/abort_controller:506:18)
+    at Timeout.<anonymous> (/home/main/Documents/YT-to-GIF/node_modules/.pnpm/@discordjs+rest@2.5.1/node_modules/@discordjs/rest/src/lib/handlers/Shared.ts:66:46)
+    at listOnTimeout (node:internal/timers:608:17)
+    at processTimers (node:internal/timers:543:7)
+[12:00:00 1754301600008]
+=> Current Date: 04/08/2025, 12:00:00
+[12:00:03 1754301603345]
+[WS => Shard 0] Heartbeat acknowledged, latency of 131ms.
+[12:00:44 1754301644620]
+[WS => Shard 0] Heartbeat acknowledged, latency of 115ms.
+[12:01:25 1754301685904]
+[WS => Shard 0] Heartbeat acknowledged, latency of 120ms.
+[12:02:07 1754301727165]
+[WS => Shard 0] Heartbeat acknowledged, latency of 119ms.
+[12:02:48 1754301768460]
+[WS => Shard 0] Heartbeat acknowledged, latency of 123ms.
+[12:03:29 1754301809745]
+[WS => Shard 0] Heartbeat acknowledged, latency of 124ms.
+[12:04:11 1754301851014]
+[WS => Shard 0] Heartbeat acknowledged, latency of 127ms.
+[12:04:52 1754301892301]
+[WS => Shard 0] Heartbeat acknowledged, latency of 123ms.
+[12:05:33 1754301933585]
+[WS => Shard 0] Heartbeat acknowledged, latency of 119ms.
+[12:06:14 1754301974850]
+[WS => Shard 0] Heartbeat acknowledged, latency of 115ms.
+[12:06:56 1754302016110]
+[WS => Shard 0] Heartbeat acknowledged, latency of 124ms.
+[12:07:37 1754302057395]
+[WS => Shard 0] Heartbeat acknowledged, latency of 118ms.
+[12:08:18 1754302098669]
+[WS => Shard 0] Heartbeat acknowledged, latency of 118ms.
+[12:08:59 1754302139930]
+[WS => Shard 0] Heartbeat acknowledged, latency of 126ms.
+[12:09:41 1754302181216]
+[WS => Shard 0] Heartbeat acknowledged, latency of 120ms.
+[12:10:00 1754302200006]
+=> Current Date: 04/08/2025, 12:10:00
+[12:10:22 1754302222487]
+[WS => Shard 0] Heartbeat acknowledged, latency of 119ms.
+[12:11:03 1754302263743]
+[WS => Shard 0] Heartbeat acknowledged, latency of 117ms.
+[12:11:40 1754302300162]
+convert/to-mp4
+[12:11:40 1754302300465]
+[12:11:40 1754302300465] [Request] POST /interactions/1401870195382947963/aW50ZXJhY3Rpb246MTQwMTg3MDE5NTM4Mjk0Nzk2MzpNcWhKZkpLM0R1T250ZzBDeWVZZmtieERXUXRJa3V2MmlpY3dOMldXblFyNXlxRmdaNVlOeEw4bEFkdlh1N0J2Vm15eGowUVplalFGUW4wRTZDMGJXZ1FVRzlreTJGS1hkSkFIRmpINlNZNmRwWm1SczZ4V0JWRTNRUEVEYnpuTQ/callback - [Response] 204 | No Content
+
+[12:11:44 1754302304989]
+[WS => Shard 0] Heartbeat acknowledged, latency of 113ms.
+[12:11:46 1754302306029]
+[12:11:46 1754302306029] [Request] POST /webhooks/1400799184730194093/aW50ZXJhY3Rpb246MTQwMTg3MDE5NTM4Mjk0Nzk2MzpNcWhKZkpLM0R1T250ZzBDeWVZZmtieERXUXRJa3V2MmlpY3dOMldXblFyNXlxRmdaNVlOeEw4bEFkdlh1N0J2Vm15eGowUVplalFGUW4wRTZDMGJXZ1FVRzlreTJGS1hkSkFIRmpINlNZNmRwWm1SczZ4V0JWRTNRUEVEYnpuTQ - [Response] 200 | OK
+
+[12:11:46 1754302306030]
+[12:11:46 1754302306030] [Rest Debug] [REST Global(POST:/webhooks/:id/:token):1400799184730194093/aW50ZXJhY3Rpb246MTQwMTg3MDE5NTM4Mjk0Nzk2MzpNcWhKZkpLM0R1T250ZzBDeWVZZmtieERXUXRJa3V2MmlpY3dOMldXblFyNXlxRmdaNVlOeEw4bEFkdlh1N0J2Vm15eGowUVplalFGUW4wRTZDMGJXZ1FVRzlreTJGS1hkSkFIRmpINlNZNmRwWm1SczZ4V0JWRTNRUEVEYnpuTQ] Received bucket hash update
+  Old Hash  : Global(POST:/webhooks/:id/:token)
+  New Hash  : 3d2712a9e4fe17cc9d3fed4a8e672e5f
+
+[12:12:26 1754302346280]
+[WS => Shard 0] Heartbeat acknowledged, latency of 123ms.
+[12:13:07 1754302387539]
+[WS => Shard 0] Heartbeat acknowledged, latency of 120ms.
+[12:13:48 1754302428829]
+[WS => Shard 0] Heartbeat acknowledged, latency of 119ms.
+[12:14:30 1754302470112]
+[WS => Shard 0] Heartbeat acknowledged, latency of 117ms.
+[12:15:11 1754302511364]
+[WS => Shard 0] Heartbeat acknowledged, latency of 120ms.
+[12:15:52 1754302552651]
+[WS => Shard 0] Heartbeat acknowledged, latency of 116ms.
+[12:16:33 1754302593942]
+[WS => Shard 0] Heartbeat acknowledged, latency of 119ms.
+[12:17:02 1754302622821]
+Message/convert-to-mp4
+[12:17:15 1754302635203]
+[WS => Shard 0] Heartbeat acknowledged, latency of 118ms.
+[12:17:56 1754302676460]
+[WS => Shard 0] Heartbeat acknowledged, latency of 124ms.
+[12:18:37 1754302717751]
+[WS => Shard 0] Heartbeat acknowledged, latency of 124ms.
+[12:19:19 1754302759022]
+[WS => Shard 0] Heartbeat acknowledged, latency of 121ms.
+[12:19:30 1754302770282]
+[WS => Shard 0] The gateway closed with an unexpected code 1006, attempting to resume.
+[12:19:30 1754302770282]
+[WS => Shard 0] Destroying shard
+	Reason: none
+	Code: 1006
+	Recover: Resume
+[12:19:30 1754302770283]
+[WS => Shard 0] Connection status during destroy
+	Needs closing: false
+	Ready state: 3
+[12:19:30 1754302770283]
+[Shard 1] Reconnecting...
+[12:19:30 1754302770784]
+[WS => Shard 0] Connecting to wss://gateway-us-east1-c.discord.gg?v=10&encoding=json
+[12:19:30 1754302770784]
+[WS => Shard 0] Waiting for event hello for 60000ms
+[12:19:30 1754302770999]
+[WS => Shard 0] Preparing first heartbeat of the connection with a jitter of 0.4984994698219707; waiting 20563ms
+[12:19:30 1754302770999]
+[WS => Shard 0] Resuming session
+	resume url: wss://gateway-us-east1-c.discord.gg
+	sequence: 4
+	shard id: 0
+[12:19:31 1754302771114]
+[WS => Shard 0] Resumed and replayed 1 events
+[12:19:31 1754302771115]
+[Shard 1] Resuming - Replayed Events: 1
+[12:19:51 1754302791582]
+[WS => Shard 0] First heartbeat sent, starting to beat every 41250ms
+[12:19:51 1754302791703]
+[WS => Shard 0] Heartbeat acknowledged, latency of 121ms.
+[12:20:00 1754302800006]
+=> Current Date: 04/08/2025, 12:20:00
+[12:20:32 1754302832991]
+[WS => Shard 0] Heartbeat acknowledged, latency of 127ms.
+[12:21:14 1754302874251]
+[WS => Shard 0] Heartbeat acknowledged, latency of 119ms.
+[12:21:55 1754302915505]
+[WS => Shard 0] Heartbeat acknowledged, latency of 123ms.
+[12:22:36 1754302956795]
+[WS => Shard 0] Heartbeat acknowledged, latency of 121ms.
+[12:23:18 1754302998075]
+[WS => Shard 0] Heartbeat acknowledged, latency of 129ms.
+[12:23:59 1754303039318]
+[WS => Shard 0] Heartbeat acknowledged, latency of 119ms.
+[12:24:40 1754303080608]
+[WS => Shard 0] Heartbeat acknowledged, latency of 118ms.
+[12:25:21 1754303121883]
+[WS => Shard 0] Heartbeat acknowledged, latency of 116ms.
+[12:26:03 1754303163153]
+[WS => Shard 0] Heartbeat acknowledged, latency of 129ms.
+[12:26:44 1754303204435]
+[WS => Shard 0] Heartbeat acknowledged, latency of 121ms.
+[12:27:25 1754303245713]
+[WS => Shard 0] Heartbeat acknowledged, latency of 119ms.
+[12:28:06 1754303286979]
+[WS => Shard 0] Heartbeat acknowledged, latency of 124ms.
+[12:28:45 1754303325363]
+Ready
+[12:28:45 1754303325370]
+++++++++++++++ Welcome to GIFfer ++++++++++++++++
+[12:28:45 1754303325370]
++      Restart all Clusters with "restart"      +
+[12:28:45 1754303325370]
++                  Arguments:                   +
+[12:28:45 1754303325370]
++   --debug --debug-db --warn --debug-queries   +
+[12:28:45 1754303325371]
++                --silent --dev                 +
+[12:28:45 1754303325371]
++++++++++++++++++++++++++++++++++++++++++++++++++
+[12:28:45 1754303325375]
+[DEBUG] Debug mode enabled
+[12:28:45 1754303325375]
+[DEBUG] Debug mode for database enabled
+[12:28:45 1754303325375]
+[DEBUG] Warn mode enabled
+[12:28:49 1754303329705]
+[WS => Shard 0] First heartbeat sent, starting to beat every 41250ms
+[12:28:49 1754303329820]
+[WS => Shard 0] Heartbeat acknowledged, latency of 115ms.
+[12:28:58 1754303338894]
+Message/convert-to-mp4
+[12:28:59 1754303339269]
+[12:28:59 1754303339269] [Request] POST /interactions/1401874552174280714/aW50ZXJhY3Rpb246MTQwMTg3NDU1MjE3NDI4MDcxNDp4OVNpQXRQV0EzNHI3MEVSOGpXNnFjdGdGQlhPZjRwRkhKMG5yNmpmeEd0cXBBbDNvSThTaUw5dDVCRTJLbHhXNllUclFCT05FT1hKRUVoc0VhRkFIcnpaeUZ1YmtKeWhrMElQMURWWXp5aE9QSjRLSEh6ek11cGhyTUNoM21DTA/callback - [Response] 204 | No Content
+
+[12:29:09 1754303349738]
+[12:29:09 1754303349737] [Request] POST /webhooks/1400799184730194093/aW50ZXJhY3Rpb246MTQwMTg3NDU1MjE3NDI4MDcxNDp4OVNpQXRQV0EzNHI3MEVSOGpXNnFjdGdGQlhPZjRwRkhKMG5yNmpmeEd0cXBBbDNvSThTaUw5dDVCRTJLbHhXNllUclFCT05FT1hKRUVoc0VhRkFIcnpaeUZ1YmtKeWhrMElQMURWWXp5aE9QSjRLSEh6ek11cGhyTUNoM21DTA - [Response] 200 | OK
+
+[12:29:09 1754303349740]
+[12:29:09 1754303349740] [Rest Debug] [REST Global(POST:/webhooks/:id/:token):1400799184730194093/aW50ZXJhY3Rpb246MTQwMTg3NDU1MjE3NDI4MDcxNDp4OVNpQXRQV0EzNHI3MEVSOGpXNnFjdGdGQlhPZjRwRkhKMG5yNmpmeEd0cXBBbDNvSThTaUw5dDVCRTJLbHhXNllUclFCT05FT1hKRUVoc0VhRkFIcnpaeUZ1YmtKeWhrMElQMURWWXp5aE9QSjRLSEh6ek11cGhyTUNoM21DTA] Received bucket hash update
+  Old Hash  : Global(POST:/webhooks/:id/:token)
+  New Hash  : 3d2712a9e4fe17cc9d3fed4a8e672e5f
+
+[12:29:31 1754303371087]
+[WS => Shard 0] Heartbeat acknowledged, latency of 119ms.
+[12:29:37 1754303377134]
+Message/convert-to-gif
+[12:29:37 1754303377464]
+[12:29:37 1754303377463] [Request] POST /interactions/1401874712484642866/aW50ZXJhY3Rpb246MTQwMTg3NDcxMjQ4NDY0Mjg2Njo2MlBjb3FLSTdiN1E2aFhkZ2dPYk1rUUFuZFplVVp6ZE9YMktSQjVGZEdERkFBaEtHQTk4RHdBdGczWnZIaE1GaUs2dXBHenh6V053UEhqR2RJelFyTXZ2a0xXa2RjZkRTWVpHRFBTeWJzQWRlR2U5MGhsaXNKc0pLbEx0UlVJRA/callback - [Response] 204 | No Content
+
+[12:30:00 1754303400005]
+=> Current Date: 04/08/2025, 12:30:00
+[12:30:12 1754303412353]
+[WS => Shard 0] Heartbeat acknowledged, latency of 133ms.
+[12:30:41 1754303441242]
+Generated GIF: 2000px width, 90% quality, 30fps: 276.21MB
+[12:30:41 1754303441256]
+Using minimum settings as last resort
+[12:30:47 1754303447096]
+[12:30:47 1754303447095] [Request] POST /webhooks/1400799184730194093/aW50ZXJhY3Rpb246MTQwMTg3NDcxMjQ4NDY0Mjg2Njo2MlBjb3FLSTdiN1E2aFhkZ2dPYk1rUUFuZFplVVp6ZE9YMktSQjVGZEdERkFBaEtHQTk4RHdBdGczWnZIaE1GaUs2dXBHenh6V053UEhqR2RJelFyTXZ2a0xXa2RjZkRTWVpHRFBTeWJzQWRlR2U5MGhsaXNKc0pLbEx0UlVJRA - [Response] 200 | OK
+
+[12:30:53 1754303453593]
+[WS => Shard 0] Heartbeat acknowledged, latency of 120ms.
+[12:31:34 1754303494884]
+[WS => Shard 0] Heartbeat acknowledged, latency of 119ms.
+[12:32:16 1754303536165]
+[WS => Shard 0] Heartbeat acknowledged, latency of 119ms.
+[12:32:57 1754303577432]
+[WS => Shard 0] Heartbeat acknowledged, latency of 125ms.
+[12:33:38 1754303618727]
+[WS => Shard 0] Heartbeat acknowledged, latency of 129ms.
+[12:34:20 1754303660001]
+[WS => Shard 0] Heartbeat acknowledged, latency of 118ms.
+[12:35:01 1754303701270]
+[WS => Shard 0] Heartbeat acknowledged, latency of 121ms.
+[12:35:42 1754303742562]
+[WS => Shard 0] Heartbeat acknowledged, latency of 121ms.
+[12:36:23 1754303783846]
+[WS => Shard 0] Heartbeat acknowledged, latency of 116ms.
+[12:37:05 1754303825118]
+[WS => Shard 0] Heartbeat acknowledged, latency of 118ms.
+[12:37:46 1754303866375]
+[WS => Shard 0] Heartbeat acknowledged, latency of 124ms.
+[12:38:27 1754303907661]
+[WS => Shard 0] Heartbeat acknowledged, latency of 119ms.
+[12:39:08 1754303948934]
+[WS => Shard 0] Heartbeat acknowledged, latency of 118ms.
+[12:39:50 1754303990190]
+[WS => Shard 0] Heartbeat acknowledged, latency of 119ms.
+[12:39:57 1754303997336]
+Message/convert-to-gif
+[12:39:57 1754303997641]
+[12:39:57 1754303997641] [Request] POST /interactions/1401877313699971092/aW50ZXJhY3Rpb246MTQwMTg3NzMxMzY5OTk3MTA5MjowaVljYWh0dmVhNDdncFA5UVBtNlpwblM3NW9jNzhZV0xGdm5XTG5wS29LV2YwcFhwY1YwRmU4bVhwRTdkWThPenRwWEVGVGJqRFhkVTVKS2haUW94QUFoSGk5SGJOMlYzNGU3MmFiek1zVlFaTlhFWlMwQW90bWpoZXBEcUMyeg/callback - [Response] 204 | No Content
+
+[12:40:00 1754304000001]
+=> Current Date: 04/08/2025, 12:40:00
+[12:40:06 1754304006398]
+Generated GIF: 2000px width, 90% quality, 30fps: 35.92MB
+[12:40:18 1754304018476]
+[12:40:18 1754304018476] [Request] POST /webhooks/1400799184730194093/aW50ZXJhY3Rpb246MTQwMTg3NzMxMzY5OTk3MTA5MjowaVljYWh0dmVhNDdncFA5UVBtNlpwblM3NW9jNzhZV0xGdm5XTG5wS29LV2YwcFhwY1YwRmU4bVhwRTdkWThPenRwWEVGVGJqRFhkVTVKS2haUW94QUFoSGk5SGJOMlYzNGU3MmFiek1zVlFaTlhFWlMwQW90bWpoZXBEcUMyeg - [Response] 200 | OK
+
+[12:40:33 1754304033105]
+Ready
+[12:40:33 1754304033112]
+++++++++++++++ Welcome to GIFfer ++++++++++++++++
+[12:40:33 1754304033112]
++      Restart all Clusters with "restart"      +
+[12:40:33 1754304033113]
++                  Arguments:                   +
+[12:40:33 1754304033113]
++   --debug --debug-db --warn --debug-queries   +
+[12:40:33 1754304033113]
++                --silent --dev                 +
+[12:40:33 1754304033113]
++++++++++++++++++++++++++++++++++++++++++++++++++
+[12:40:33 1754304033118]
+[DEBUG] Debug mode enabled
+[12:40:33 1754304033118]
+[DEBUG] Debug mode for database enabled
+[12:40:33 1754304033118]
+[DEBUG] Warn mode enabled
+[12:40:36 1754304036418]
+[WS => Shard 0] First heartbeat sent, starting to beat every 41250ms
+[12:40:36 1754304036534]
+[WS => Shard 0] Heartbeat acknowledged, latency of 116ms.
+[12:40:40 1754304040819]
+Message/convert-to-gif
+[12:40:41 1754304041194]
+[12:40:41 1754304041194] [Request] POST /interactions/1401877496248533022/aW50ZXJhY3Rpb246MTQwMTg3NzQ5NjI0ODUzMzAyMjp2Qm1pMUY3YnE5d3lCbUM3eGtDTWxlM0ZqRGpINmpTWEZuSUlhU2Zha2lMdWlwcE5ISWtTQ3BoVFo4ckpGV0EyQzhXQzdScktWZ3RFS1Y5bUd2MWxUTjFXN3VFeW9sVFBZTEdyWHk4OE5XUmc5TEN3bnpubERJN0Y3TGw5QlVpcQ/callback - [Response] 204 | No Content
+
+[12:40:48 1754304048913]
+Generated GIF: 2000px width, 90% quality, 30fps: 35.92MB
+[12:41:01 1754304061423]
+[12:41:01 1754304061423] [Request] POST /webhooks/1400799184730194093/aW50ZXJhY3Rpb246MTQwMTg3NzQ5NjI0ODUzMzAyMjp2Qm1pMUY3YnE5d3lCbUM3eGtDTWxlM0ZqRGpINmpTWEZuSUlhU2Zha2lMdWlwcE5ISWtTQ3BoVFo4ckpGV0EyQzhXQzdScktWZ3RFS1Y5bUd2MWxUTjFXN3VFeW9sVFBZTEdyWHk4OE5XUmc5TEN3bnpubERJN0Y3TGw5QlVpcQ - [Response] 200 | OK
+
+[12:41:01 1754304061425]
+[12:41:01 1754304061425] [Rest Debug] [REST Global(POST:/webhooks/:id/:token):1400799184730194093/aW50ZXJhY3Rpb246MTQwMTg3NzQ5NjI0ODUzMzAyMjp2Qm1pMUY3YnE5d3lCbUM3eGtDTWxlM0ZqRGpINmpTWEZuSUlhU2Zha2lMdWlwcE5ISWtTQ3BoVFo4ckpGV0EyQzhXQzdScktWZ3RFS1Y5bUd2MWxUTjFXN3VFeW9sVFBZTEdyWHk4OE5XUmc5TEN3bnpubERJN0Y3TGw5QlVpcQ] Received bucket hash update
+  Old Hash  : Global(POST:/webhooks/:id/:token)
+  New Hash  : 3d2712a9e4fe17cc9d3fed4a8e672e5f
+
+[12:41:17 1754304077799]
+[WS => Shard 0] Heartbeat acknowledged, latency of 119ms.
+[12:41:59 1754304119091]
+[WS => Shard 0] Heartbeat acknowledged, latency of 133ms.
+[12:42:40 1754304160346]
+[WS => Shard 0] Heartbeat acknowledged, latency of 131ms.
+[12:43:21 1754304201626]
+[WS => Shard 0] Heartbeat acknowledged, latency of 120ms.
+[12:44:02 1754304242899]
+[WS => Shard 0] Heartbeat acknowledged, latency of 114ms.
+[12:44:44 1754304284164]
+[WS => Shard 0] Heartbeat acknowledged, latency of 117ms.
+[12:45:25 1754304325465]
+[WS => Shard 0] Heartbeat acknowledged, latency of 127ms.
+[12:46:06 1754304366751]
+[WS => Shard 0] Heartbeat acknowledged, latency of 130ms.
+[12:46:48 1754304408003]
+[WS => Shard 0] Heartbeat acknowledged, latency of 117ms.
+[12:47:28 1754304448833]
+Ready
+[12:47:28 1754304448840]
+++++++++++++++ Welcome to GIFfer ++++++++++++++++
+[12:47:28 1754304448840]
++      Restart all Clusters with "restart"      +
+[12:47:28 1754304448840]
++                  Arguments:                   +
+[12:47:28 1754304448840]
++   --debug --debug-db --warn --debug-queries   +
+[12:47:28 1754304448840]
++                --silent --dev                 +
+[12:47:28 1754304448840]
++++++++++++++++++++++++++++++++++++++++++++++++++
+[12:47:28 1754304448845]
+[DEBUG] Debug mode enabled
+[12:47:28 1754304448845]
+[DEBUG] Debug mode for database enabled
+[12:47:28 1754304448845]
+[DEBUG] Warn mode enabled
+[12:47:50 1754304470468]
+convert/to-gif
+[12:47:50 1754304470940]
+[12:47:50 1754304470940] [Request] POST /interactions/1401879298293628958/aW50ZXJhY3Rpb246MTQwMTg3OTI5ODI5MzYyODk1ODoxRHp3MmtkU1RzNk5pVkt1czdsRWFrdEZmT1FLb0p2cTd5THhvSzFyelZESFA2WWVmOUNFWjJsR0tnZXhuOTltOGlBb3k4alZLbW9nQWhyVjNjRGpzNFVUUWxXRndvZW42emZmazNVeWpjdDFDQzBUTlNUN21xaFlZUUZDTVROSA/callback - [Response] 204 | No Content
+
+[12:47:55 1754304475146]
+[WS => Shard 0] First heartbeat sent, starting to beat every 41250ms
+[12:47:55 1754304475263]
+[WS => Shard 0] Heartbeat acknowledged, latency of 118ms.
+[12:48:10 1754304490322]
+Generated GIF: 2000px width, 90% quality, 30fps: 95.35MB
+[12:48:36 1754304516516]
+[WS => Shard 0] Heartbeat acknowledged, latency of 119ms.
+[12:49:10 1754304550435]
+This operation was aborted AbortError: This operation was aborted
+    at new DOMException (node:internal/per_context/domexception:53:5)
+    at AbortController.abort (node:internal/abort_controller:506:18)
+    at Timeout.<anonymous> (/home/main/Documents/YT-to-GIF/node_modules/.pnpm/@discordjs+rest@2.5.1/node_modules/@discordjs/rest/src/lib/handlers/Shared.ts:66:46)
+    at listOnTimeout (node:internal/timers:608:17)
+    at processTimers (node:internal/timers:543:7)
+[12:49:17 1754304557773]
+[WS => Shard 0] Heartbeat acknowledged, latency of 125ms.
+[12:49:59 1754304599053]
+[WS => Shard 0] Heartbeat acknowledged, latency of 124ms.
+[12:50:00 1754304600004]
+=> Current Date: 04/08/2025, 12:50:00
+[12:50:40 1754304640307]
+[WS => Shard 0] Heartbeat acknowledged, latency of 116ms.
+[12:51:21 1754304681603]
+[WS => Shard 0] Heartbeat acknowledged, latency of 119ms.
+[12:52:02 1754304722886]
+[WS => Shard 0] Heartbeat acknowledged, latency of 118ms.
+[12:52:44 1754304764159]
+[WS => Shard 0] Heartbeat acknowledged, latency of 126ms.
+[12:53:25 1754304805447]
+[WS => Shard 0] Heartbeat acknowledged, latency of 123ms.
+[12:54:06 1754304846733]
+[WS => Shard 0] Heartbeat acknowledged, latency of 121ms.
+[12:54:48 1754304888004]
+[WS => Shard 0] Heartbeat acknowledged, latency of 122ms.
