@@ -1,4 +1,3 @@
-import type { AttachmentPayload } from 'discord.js';
 import { createWriteStream } from 'fs';
 import fetch from 'node-fetch';
 import { tmpdir } from 'os';
@@ -27,6 +26,12 @@ export default abstract class MP4FileConverter extends Converter {
   const fileStream = createWriteStream(tempPath);
   await pipeline(response.body as NodeJS.ReadableStream, fileStream);
 
+  // Log file size
+  const { promises: fs } = await import('fs');
+  const stats = await fs.stat(tempPath);
+  const fileSizeMB = (stats.size / (1024 * 1024)).toFixed(2);
+  console.log(`[MP4 Download] File: ${fileName} | Size: ${fileSizeMB} MB | URL: ${this.url}`);
+
   return tempPath;
  }
 
@@ -40,7 +45,12 @@ export default abstract class MP4FileConverter extends Converter {
    throw new Error('URL does not point to a video file');
   }
 
-  return Buffer.from(await response.arrayBuffer());
+  const buffer = Buffer.from(await response.arrayBuffer());
+  const fileSizeMB = (buffer.length / (1024 * 1024)).toFixed(2);
+  const fileName = this.extractMP4FileName() || 'video';
+  console.log(`[MP4 Buffer] File: ${fileName} | Size: ${fileSizeMB} MB | URL: ${this.url}`);
+  
+  return buffer;
  }
 
  protected extractMP4FileName(): string | null {
@@ -53,5 +63,5 @@ export default abstract class MP4FileConverter extends Converter {
   return hasVideoExtension ? fileName : null;
  }
 
- abstract convert(): Promise<AttachmentPayload>;
+ abstract convert(): Promise<string>;
 }

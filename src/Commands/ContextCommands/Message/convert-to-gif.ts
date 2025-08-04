@@ -19,11 +19,10 @@ export default async (interaction: MessageContextMenuCommandInteraction) => {
   if (embedWithVideo?.video?.url) {
    try {
     const converter = new TwitterToGIF(embedWithVideo.video.url);
-    const file = await converter.convert();
+    const cdnUrl = await converter.convert();
     
     await interaction.followUp({
-     content: `✅ Converted Twitter/X video to GIF from [this message](${message.url})`,
-     files: [file]
+     content: `✅ Converted Twitter/X video to GIF: ${cdnUrl}`
     });
     return;
    } catch (error) {
@@ -79,10 +78,10 @@ export default async (interaction: MessageContextMenuCommandInteraction) => {
  
  try {
   const converter = new GIFConverter(url);
-  const file = await converter.convert();
+  const cdnUrl = await converter.convert();
   
   await interaction.followUp({
-   files: [file]
+   content: `✅ Converted to GIF: ${cdnUrl}`
   });
  } catch (error) {
   console.error('GIF conversion error:', error);

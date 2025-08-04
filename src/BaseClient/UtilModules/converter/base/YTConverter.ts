@@ -1,9 +1,9 @@
-import type { AttachmentPayload } from 'discord.js';
-import { createWriteStream } from 'fs';
-import { tmpdir } from 'os';
+import { createWriteStream, promises as fs } from 'fs';
 import { join } from 'path';
 import { pipeline } from 'stream/promises';
 import ytdl from '@distube/ytdl-core';
+import ffmpeg from 'fluent-ffmpeg';
+import { getTempDirSync } from '../../getTempDir.js';
 import Converter from './Converter.js';
 
 export default abstract class YTConverter extends Converter {
@@ -15,22 +15,65 @@ export default abstract class YTConverter extends Converter {
 
  protected async downloadYouTubeVideo(): Promise<string> {
   this.videoInfo = await ytdl.getInfo(this.url);
-  const format = ytdl.chooseFormat(this.videoInfo.formats, {
-   quality: 'highest',
-   filter: 'videoandaudio',
+  
+  // Try to get highest quality video (including 4K/8K)
+  const videoFormat = ytdl.chooseFormat(this.videoInfo.formats, {
+   quality: 'highestvideo',
+   filter: 'video',
   });
 
-  if (!format) throw new Error('No suitable video format found');
+  // Get highest quality audio
+  const audioFormat = ytdl.chooseFormat(this.videoInfo.formats, {
+   quality: 'highestaudio',
+   filter: 'audio',
+  });
 
-  const fileName = `${this.videoInfo.videoDetails.videoId}.mp4`;
-  const tempPath = join(tmpdir(), fileName);
+  if (!videoFormat) throw new Error('No suitable video format found');
+  
+  const videoId = this.videoInfo.videoDetails.videoId;
+  const uniqueId = `${videoId}_${Date.now()}_${Math.random().toString(36).substring(7)}`;
+  const tempDir = getTempDirSync();
+  const tempVideoPath = join(tempDir, `${uniqueId}_video.mp4`);
+  const tempAudioPath = join(tempDir, `${uniqueId}_audio.mp4`);
+  const finalPath = join(tempDir, `${uniqueId}.mp4`);
 
-  const stream = ytdl(this.url, { format });
-  const writeStream = createWriteStream(tempPath);
+  // Download video stream
+  const videoStream = ytdl(this.url, { format: videoFormat });
+  const videoWriteStream = createWriteStream(tempVideoPath);
+  await pipeline(videoStream, videoWriteStream);
 
-  await pipeline(stream, writeStream);
+  // If we have audio, download and merge
+  if (audioFormat) {
+   const audioStream = ytdl(this.url, { format: audioFormat });
+   const audioWriteStream = createWriteStream(tempAudioPath);
+   await pipeline(audioStream, audioWriteStream);
 
-  return tempPath;
+   // Merge video and audio using ffmpeg
+   await new Promise<void>((resolve, reject) => {
+    ffmpeg()
+     .input(tempVideoPath)
+     .input(tempAudioPath)
+     .outputOptions(['-c:v copy', '-c:a aac', '-shortest'])
+     .output(finalPath)
+     .on('end', () => resolve())
+     .on('error', (err) => reject(err))
+     .run();
+   });
+
+   // Cleanup temp files
+   await fs.unlink(tempVideoPath).catch(() => {});
+   await fs.unlink(tempAudioPath).catch(() => {});
+  } else {
+   // No audio available, just use video
+   await fs.rename(tempVideoPath, finalPath);
+  }
+
+  // Log file size
+  const stats = await fs.stat(finalPath);
+  const fileSizeMB = (stats.size / (1024 * 1024)).toFixed(2);
+  console.log(`[YT Download] Video: ${videoId} | Size: ${fileSizeMB} MB | Quality: ${videoFormat.qualityLabel || videoFormat.quality}`);
+
+  return finalPath;
  }
 
  protected getYouTubeVideoId(): string | null {
@@ -38,5 +81,5 @@ export default abstract class YTConverter extends Converter {
   return match ? match[1] : null;
  }
 
- abstract convert(): Promise<AttachmentPayload>;
+ abstract convert(): Promise<string>;
 }

@@ -10,5 +10,6 @@ export default async (cmd: ChatInputCommandInteraction) => {
   return;
  }
 
- await new GIFConverter(url).convert().then((file) => cmd.followUp({ files: [file] }));
+ const cdnUrl = await new GIFConverter(url).convert();
+ await cmd.followUp({ content: `✅ Converted to GIF: ${cdnUrl}` });
 };

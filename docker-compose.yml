@@ -12,6 +12,8 @@ services:
     volumes:
       # Mount for temporary files if needed
       - /tmp:/tmp:rw
+      # Mount SSH key with specific permissions
+      - /home/main/.ssh/keys/docker_hetzner_rsa:/tmp/docker_hetzner_rsa:ro
     # Uncomment if your bot needs network access restrictions
     # networks:
     #   - bot-network

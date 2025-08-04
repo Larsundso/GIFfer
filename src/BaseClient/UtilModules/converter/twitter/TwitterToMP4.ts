@@ -1,4 +1,3 @@
-import type { AttachmentPayload } from 'discord.js';
 import { promises as fs } from 'fs';
 import fetch from 'node-fetch';
 import { tmpdir } from 'os';
@@ -6,13 +5,14 @@ import { join } from 'path';
 import { pipeline } from 'stream/promises';
 import { createWriteStream } from 'fs';
 import Converter from '../base/Converter.js';
+import { uploadToSSH } from '../../sshUpload.js';
 
 export default class TwitterToMP4 extends Converter {
  constructor(url: string) {
   super(url);
  }
 
- async convert(): Promise<AttachmentPayload> {
+ async convert(): Promise<string> {
   const response = await fetch(this.url);
   
   if (!response.ok) throw new Error(`Failed to fetch video: ${response.statusText}`);
@@ -25,16 +25,18 @@ export default class TwitterToMP4 extends Converter {
   const fileStream = createWriteStream(tempPath);
   await pipeline(response.body as NodeJS.ReadableStream, fileStream);
   
-  // Read file into buffer
-  const fileBuffer = await fs.readFile(tempPath);
+  // Log file size before upload
+  const stats = await fs.stat(tempPath);
+  const fileSizeMB = (stats.size / (1024 * 1024)).toFixed(2);
+  console.log(`[Twitter MP4] File: ${fileName} | Size: ${fileSizeMB} MB | URL: ${this.url}`);
+  
+  // Upload to SSH server and get CDN URL
+  const cdnUrl = await uploadToSSH(tempPath, fileName);
   
   // Clean up temp file
   await fs.unlink(tempPath).catch(() => {});
   
-  return {
-   name: fileName,
-   attachment: fileBuffer,
-  };
+  return cdnUrl;
  }
 
  private extractFileName(): string | null {

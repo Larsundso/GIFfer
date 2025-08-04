@@ -1,5 +1,3 @@
-import type { AttachmentPayload } from 'discord.js';
-
 export enum VideoType {
  MP4 = 'mp4',
  YT = 'yt',
@@ -20,5 +18,5 @@ export default abstract class Converter {
    : VideoType.MP4;
  }
 
- abstract convert(): Promise<AttachmentPayload>;
+ abstract convert(): Promise<string>;
 }

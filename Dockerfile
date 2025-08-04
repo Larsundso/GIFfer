@@ -22,17 +22,27 @@ RUN pnpm build
 # Production stage
 FROM node:22-alpine
 
-# Install dependencies for video processing and GIF creation
+# Install dependencies for video processing, GIF creation, and SSH
 RUN apk add --no-cache \
     ffmpeg \
     cargo \
     rust \
     gcc \
     musl-dev \
+    openssh-client \
+    rsync \
+    wget \
+    gcompat \
     && cargo install gifski \
     && cp /root/.cargo/bin/gifski /usr/local/bin/ \
     && apk del cargo rust gcc musl-dev \
     && rm -rf /root/.cargo
+
+# Install cloudflared for SSH proxy (Alpine Linux compatible)
+RUN wget https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64 -O /tmp/cloudflared \
+    && chmod +x /tmp/cloudflared \
+    && mv /tmp/cloudflared /usr/local/bin/ \
+    && /usr/local/bin/cloudflared version || echo "Cloudflared installed but version check failed"
 
 # Install pnpm
 RUN corepack enable && corepack prepare pnpm@10.14.0 --activate
@@ -56,16 +66,43 @@ COPY --from=builder --chown=nodejs:nodejs /app/dist ./dist
 
 # Copy necessary config files
 COPY --chown=nodejs:nodejs .env* ./
+COPY --chown=nodejs:nodejs ssh-config ./ssh-config
 
-# Create logs directory with proper permissions
-RUN mkdir -p /app/logs && \
-    chown -R nodejs:nodejs /app/logs
+# Create logs directory, SSH directory, and temp directory with proper permissions
+RUN mkdir -p /app/logs /home/nodejs/.ssh /home/nodejs/.ssh/keys /app/temp && \
+    chown -R nodejs:nodejs /app/logs /home/nodejs /home/nodejs/.ssh /app/temp && \
+    chmod 700 /home/nodejs/.ssh && \
+    chmod 700 /home/nodejs/.ssh/keys && \
+    chmod 777 /app/temp && \
+    chmod 777 /tmp
 
-# Use non-root user
-USER nodejs
+# Move SSH config to proper location and set permissions
+RUN cp /app/ssh-config /home/nodejs/.ssh/config && \
+    chown nodejs:nodejs /home/nodejs/.ssh/config && \
+    chmod 600 /home/nodejs/.ssh/config
+
+# Create wrapper script that copies SSH key as root then runs app as nodejs
+RUN printf '#!/bin/sh\n\
+if [ -f /tmp/docker_hetzner_rsa ]; then\n\
+  cp /tmp/docker_hetzner_rsa /home/nodejs/.ssh/docker_hetzner_rsa\n\
+  chown nodejs:nodejs /home/nodejs/.ssh/docker_hetzner_rsa\n\
+  chmod 600 /home/nodejs/.ssh/docker_hetzner_rsa\n\
+  sed -i "s|/home/nodejs/.ssh/keys/docker_hetzner_rsa|/home/nodejs/.ssh/docker_hetzner_rsa|g" /home/nodejs/.ssh/config\n\
+  echo "[SSH] Key copied successfully"\n\
+else\n\
+  echo "[SSH] Warning: SSH key not found at /tmp/docker_hetzner_rsa"\n\
+fi\n\
+exec su -s /bin/sh nodejs -c "node --no-deprecation --no-warnings --experimental-json-modules ./dist/index.js"\n' > /app/entrypoint.sh && \
+    chmod +x /app/entrypoint.sh
+
+# Test that ssh is available
+RUN ssh -V
+
+# Keep running as root for entrypoint (will switch to nodejs after copying keys)
+# USER nodejs
 
 # Expose port if needed (adjust based on your bot configuration)
 # EXPOSE 3000
 
 # Start the application
-CMD ["node", "--no-deprecation", "--no-warnings", "--experimental-json-modules", "./dist/index.js"]
+CMD ["sh", "/app/entrypoint.sh"]

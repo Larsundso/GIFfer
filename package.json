@@ -32,6 +32,7 @@
     "@swc/cli": "^0.7.8",
     "@swc/core": "1.13.3",
     "@types/fluent-ffmpeg": "^2.1.27",
+    "@types/form-data": "^2.5.2",
     "@types/node": "^24.1.0",
     "@types/source-map-support": "^0.5.10",
     "@typescript-eslint/eslint-plugin": "^8.38.0",

@@ -1,4 +1,3 @@
-import type { AttachmentPayload } from 'discord.js';
 import { promises as fs } from 'fs';
 import fetch from 'node-fetch';
 import { tmpdir } from 'os';
@@ -7,6 +6,7 @@ import { pipeline } from 'stream/promises';
 import { createWriteStream } from 'fs';
 import GIFConverterBase from '../base/GIFConverterBase.js';
 import Converter from '../base/Converter.js';
+import { uploadToSSH } from '../../sshUpload.js';
 
 export default class TwitterToGIF extends Converter {
  private gifConverter: GIFConverterBase;
@@ -16,7 +16,7 @@ export default class TwitterToGIF extends Converter {
   this.gifConverter = new (class extends GIFConverterBase {})();
  }
 
- async convert(): Promise<AttachmentPayload> {
+ async convert(): Promise<string> {
   // First download the MP4
   const mp4Path = await this.downloadTwitterVideo();
   
@@ -26,15 +26,13 @@ export default class TwitterToGIF extends Converter {
   // Generate filename
   const fileName = this.extractFileName();
   
-  const gifBuffer = await fs.readFile(tempGifPath);
+  // Upload to SSH server and get CDN URL
+  const cdnUrl = await uploadToSSH(tempGifPath, fileName);
   
   // Cleanup
   await this.cleanup(mp4Path, tempGifPath);
   
-  return {
-   name: fileName,
-   attachment: gifBuffer,
-  };
+  return cdnUrl;
  }
 
  private async downloadTwitterVideo(): Promise<string> {

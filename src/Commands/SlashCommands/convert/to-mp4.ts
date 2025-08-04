@@ -10,5 +10,6 @@ export default async (cmd: ChatInputCommandInteraction) => {
   return;
  }
 
- await new MP4Converter(url).convert().then((file) => cmd.followUp({ files: [file] }));
+ const cdnUrl = await new MP4Converter(url).convert();
+ await cmd.followUp({ content: `✅ Converted to MP4: ${cdnUrl}` });
 };

@@ -1,0 +1,9 @@
+Host ssh.ayakobot.com
+  HostName ssh.ayakobot.com
+  User docker
+  ProxyCommand /usr/local/bin/cloudflared access ssh --hostname %h
+  ServerAliveInterval 240
+  PreferredAuthentications publickey
+  IdentityFile /home/nodejs/.ssh/keys/docker_hetzner_rsa
+  StrictHostKeyChecking no
+  UserKnownHostsFile /dev/null
