@@ -47,15 +47,20 @@ export default async (interaction: MessageContextMenuCommandInteraction) => {
   return false;
  });
  
+ // Check for video embeds (Discord CDN videos)
+ const videoEmbed = message.embeds.find(embed => embed.video?.url);
+ 
  // Check for URLs in message content
  const urlRegex = /(https?:\/\/[^\s]+)/g;
  const urls = message.content.match(urlRegex);
  
  let url: string | null = null;
  
- // Priority: 1) Video attachments, 2) Video URLs in content
+ // Priority: 1) Video attachments, 2) Video embeds, 3) Video URLs in content
  if (videoAttachment) {
   url = videoAttachment.url;
+ } else if (videoEmbed?.video?.url) {
+  url = videoEmbed.video.url;
  } else if (urls && urls.length > 0) {
   // Try to find a YouTube or direct video URL
   url = urls.find(u => {
