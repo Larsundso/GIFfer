@@ -28,7 +28,18 @@ const client = new Discord.Client({
  },
 });
 
-await client.login(process.env.Token ?? '');
+// Ensure login only happens once
+let loginPromise: Promise<string> | null = null;
+
+export const login = async () => {
+ if (!loginPromise) {
+  loginPromise = client.login(process.env.Token ?? '');
+ }
+ return loginPromise;
+};
+
+// Initialize login
+await login();
 
 export const API = new DiscordCore.API(client.rest);
 export default client;

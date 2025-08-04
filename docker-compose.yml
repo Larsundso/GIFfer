@@ -1,0 +1,38 @@
+services:
+  yt-to-gif:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: yt-to-gif-bot
+    restart: unless-stopped
+    environment:
+      NODE_ENV: production
+    env_file:
+      - .env
+    volumes:
+      # Mount for temporary files if needed
+      - /tmp:/tmp:rw
+    # Uncomment if your bot needs network access restrictions
+    # networks:
+    #   - bot-network
+    # Resource limits for lightweight deployment
+    deploy:
+      resources:
+        limits:
+          cpus: '1'
+          memory: 512M
+        reservations:
+          cpus: '0.5'
+          memory: 256M
+    # Health check
+    healthcheck:
+      test: ["CMD", "node", "-e", "process.exit(0)"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+# Uncomment if using network isolation
+# networks:
+#   bot-network:
+#     driver: bridge

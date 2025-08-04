@@ -36,10 +36,15 @@ export default async (interaction: MessageContextMenuCommandInteraction) => {
   }
  }
  
- // Check for attachments that are videos or GIFs
- const videoAttachment = message.attachments.find(
-  att => att.contentType?.startsWith('video/') || att.contentType === 'image/gif'
- );
+ // Check for attachments that are videos, GIFs, or have video extensions
+ const videoExtensions = ['.mp4', '.mov', '.webm', '.avi', '.mkv', '.flv', '.wmv', '.m4v', '.gif'];
+ const videoAttachment = message.attachments.find(att => {
+  // Check content type
+  if (att.contentType?.startsWith('video/') || att.contentType === 'image/gif') return true;
+  // Check file extension as fallback (for files with generic content types)
+  if (att.name && videoExtensions.some(ext => att.name!.toLowerCase().endsWith(ext))) return true;
+  return false;
+ });
  
  // Check for URLs in message content
  const urlRegex = /(https?:\/\/[^\s]+)/g;
@@ -47,22 +52,20 @@ export default async (interaction: MessageContextMenuCommandInteraction) => {
  
  let url: string | null = null;
  
+ // Priority: 1) Video attachments, 2) Video URLs in content
  if (videoAttachment) {
   url = videoAttachment.url;
  } else if (urls && urls.length > 0) {
-  // Try to find a YouTube or video URL
-  url = urls.find(u => 
-   u.includes('youtube.com') || 
-   u.includes('youtu.be') || 
-   u.endsWith('.mp4') || 
-   u.endsWith('.webm') ||
-   u.endsWith('.gif')
-  ) || urls[0];
+  // Try to find a YouTube or direct video URL
+  url = urls.find(u => {
+   if (u.includes('youtube.com') || u.includes('youtu.be')) return true;
+   return videoExtensions.some(ext => u.toLowerCase().endsWith(ext));
+  }) || null;
  }
  
  if (!url) {
   await interaction.followUp({
-   content: '❌ No video URL or attachment found in this message.',
+   content: '❌ No video URL or attachment found in this message. Supported formats: MP4, MOV, WEBM, AVI, MKV, FLV, WMV, M4V, GIF',
    ephemeral: true
   });
   return;

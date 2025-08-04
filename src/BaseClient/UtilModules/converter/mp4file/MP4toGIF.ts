@@ -15,8 +15,8 @@ export default class MP4toGIF extends MP4FileConverter {
   const mp4Path = await this.downloadMP4File();
   const tempGifPath = await this.gifConverter.convertWithAdaptiveResolution(mp4Path);
 
-  const mp4Name = this.extractMP4FileName();
-  const fileName = mp4Name ? mp4Name.replace('.mp4', '.gif') : 'output.gif';
+  const videoName = this.extractMP4FileName();
+  const fileName = videoName ? videoName.replace(/\.(mp4|mov|webm|avi|mkv|flv|wmv|m4v)$/i, '.gif') : 'output.gif';
   
   const gifBuffer = await fs.readFile(tempGifPath);
   await this.cleanup(mp4Path, tempGifPath);

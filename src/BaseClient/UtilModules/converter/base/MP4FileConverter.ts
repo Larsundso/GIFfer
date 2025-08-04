@@ -17,7 +17,9 @@ export default abstract class MP4FileConverter extends Converter {
   if (!response.ok) throw new Error(`Failed to fetch MP4: ${response.statusText}`);
 
   const contentType = response.headers.get('content-type');
-  if (!contentType?.includes('video/mp4')) throw new Error('URL does not point to an MP4 file');
+  if (!contentType?.includes('video/') && !contentType?.includes('application/octet-stream')) {
+   throw new Error('URL does not point to a video file');
+  }
 
   const fileName = this.extractMP4FileName() || 'video.mp4';
   const tempPath = join(tmpdir(), fileName);
@@ -34,7 +36,9 @@ export default abstract class MP4FileConverter extends Converter {
   if (!response.ok) throw new Error(`Failed to fetch MP4: ${response.statusText}`);
 
   const contentType = response.headers.get('content-type');
-  if (!contentType?.includes('video/mp4')) throw new Error('URL does not point to an MP4 file');
+  if (!contentType?.includes('video/') && !contentType?.includes('application/octet-stream')) {
+   throw new Error('URL does not point to a video file');
+  }
 
   return Buffer.from(await response.arrayBuffer());
  }
@@ -44,7 +48,9 @@ export default abstract class MP4FileConverter extends Converter {
   const lastPart = urlParts[urlParts.length - 1];
   const fileName = lastPart.split('?')[0];
 
-  return fileName.endsWith('.mp4') ? fileName : null;
+  const videoExtensions = ['.mp4', '.mov', '.webm', '.avi', '.mkv', '.flv', '.wmv', '.m4v'];
+  const hasVideoExtension = videoExtensions.some(ext => fileName.toLowerCase().endsWith(ext));
+  return hasVideoExtension ? fileName : null;
  }
 
  abstract convert(): Promise<AttachmentPayload>;
