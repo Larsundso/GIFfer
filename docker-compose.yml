@@ -21,11 +21,11 @@ services:
     deploy:
       resources:
         limits:
-          cpus: '1'
-          memory: 512M
+          cpus: '2'
+          memory: 2G
         reservations:
-          cpus: '0.5'
-          memory: 256M
+          cpus: '1'
+          memory: 1G
     # Health check
     healthcheck:
       test: ["CMD", "node", "-e", "process.exit(0)"]

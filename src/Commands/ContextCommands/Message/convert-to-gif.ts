@@ -27,8 +27,13 @@ export default async (interaction: MessageContextMenuCommandInteraction) => {
     return;
    } catch (error) {
     console.error('Twitter GIF conversion error:', error);
+    let errorMessage = error instanceof Error ? error.message : 'Unknown error';
+    // Truncate error message if it's too long for Discord
+    if (errorMessage.length > 1900) {
+     errorMessage = errorMessage.substring(0, 1900) + '...';
+    }
     await interaction.followUp({
-     content: `❌ Failed to convert Twitter/X video: ${error instanceof Error ? error.message : 'Unknown error'}`,
+     content: `❌ Failed to convert Twitter/X video: ${errorMessage}`,
      ephemeral: true
     });
     return;
@@ -85,8 +90,13 @@ export default async (interaction: MessageContextMenuCommandInteraction) => {
   });
  } catch (error) {
   console.error('GIF conversion error:', error);
+  let errorMessage = error instanceof Error ? error.message : 'Unknown error';
+  // Truncate error message if it's too long for Discord
+  if (errorMessage.length > 1900) {
+   errorMessage = errorMessage.substring(0, 1900) + '...';
+  }
   await interaction.followUp({
-   content: `❌ Failed to convert to GIF: ${error instanceof Error ? error.message : 'Unknown error'}`,
+   content: `❌ Failed to convert to GIF: ${errorMessage}`,
    ephemeral: true
   });
  }
