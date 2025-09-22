@@ -1,4 +1,5 @@
 import { promises as fs } from 'fs';
+import { randomUUID } from 'crypto';
 import fetch from 'node-fetch';
 import { tmpdir } from 'os';
 import { join } from 'path';
@@ -10,26 +11,34 @@ import { uploadToSSH } from '../../sshUpload.js';
 
 export default class TwitterToGIF extends Converter {
  private gifConverter: GIFConverterBase;
+ private onProgress?: (status: string) => Promise<void>;
 
- constructor(url: string) {
+ constructor(url: string, onProgress?: (status: string) => Promise<void>) {
   super(url);
   this.gifConverter = new (class extends GIFConverterBase {})();
+  this.onProgress = onProgress;
  }
 
  async convert(): Promise<string> {
+  const progress = this.onProgress;
+  
   // First download the MP4
+  if (progress) await progress('Downloading Twitter/X video...');
   const mp4Path = await this.downloadTwitterVideo();
   
   // Convert to GIF with adaptive resolution
-  const tempGifPath = await this.gifConverter.convertWithAdaptiveResolution(mp4Path);
+  if (progress) await progress('Converting video to GIF...');
+  const tempGifPath = await this.gifConverter.convertWithAdaptiveResolution(mp4Path, undefined, progress);
   
-  // Generate filename
-  const fileName = this.extractFileName();
+  // Generate filename with UUID
+  const fileName = `${randomUUID()}.gif`;
   
   // Upload to SSH server and get CDN URL
+  if (progress) await progress('Uploading to CDN...');
   const cdnUrl = await uploadToSSH(tempGifPath, fileName);
   
   // Cleanup
+  if (progress) await progress('Cleaning up temporary files...');
   await this.cleanup(mp4Path, tempGifPath);
   
   return cdnUrl;
@@ -48,18 +57,6 @@ export default class TwitterToGIF extends Converter {
   return tempPath;
  }
 
- private extractFileName(): string {
-  // Try to extract video ID from the URL
-  const match = this.url.match(/\/([^\/]+)\.mp4$/);
-  if (match) return `twitter_${match[1]}.gif`;
-  
-  // Try to extract from amplify_video pattern
-  const amplifyMatch = this.url.match(/amplify_video\/(\d+)/);
-  if (amplifyMatch) return `twitter_${amplifyMatch[1]}.gif`;
-  
-  // Generate based on timestamp
-  return `twitter_video_${Date.now()}.gif`;
- }
 
  private async cleanup(mp4Path: string, gifPath: string): Promise<void> {
   await Promise.all([

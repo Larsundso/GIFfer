@@ -1,4 +1,5 @@
 import { promises as fs } from 'fs';
+import { randomUUID } from 'crypto';
 import fetch from 'node-fetch';
 import { tmpdir } from 'os';
 import { join } from 'path';
@@ -8,18 +9,24 @@ import Converter from '../base/Converter.js';
 import { uploadToSSH } from '../../sshUpload.js';
 
 export default class TwitterToMP4 extends Converter {
- constructor(url: string) {
+ private onProgress?: (status: string) => Promise<void>;
+
+ constructor(url: string, onProgress?: (status: string) => Promise<void>) {
   super(url);
+  this.onProgress = onProgress;
  }
 
  async convert(): Promise<string> {
+  const progress = this.onProgress;
+  
+  if (progress) await progress('Downloading Twitter/X video...');
   const response = await fetch(this.url);
   
   if (!response.ok) throw new Error(`Failed to fetch video: ${response.statusText}`);
   
-  // Extract filename from URL or use default
-  const fileName = this.extractFileName() || 'twitter_video.mp4';
-  const tempPath = join(tmpdir(), fileName);
+  // Generate filename with UUID
+  const fileName = `${randomUUID()}.mp4`;
+  const tempPath = join(tmpdir(), `temp_${fileName}`);
   
   // Download the video
   const fileStream = createWriteStream(tempPath);
@@ -30,25 +37,17 @@ export default class TwitterToMP4 extends Converter {
   const fileSizeMB = (stats.size / (1024 * 1024)).toFixed(2);
   console.log(`[Twitter MP4] File: ${fileName} | Size: ${fileSizeMB} MB | URL: ${this.url}`);
   
+  if (progress) await progress(`Downloaded: ${fileSizeMB} MB`);
+  
   // Upload to SSH server and get CDN URL
+  if (progress) await progress('Uploading to CDN...');
   const cdnUrl = await uploadToSSH(tempPath, fileName);
   
   // Clean up temp file
+  if (progress) await progress('Cleaning up temporary files...');
   await fs.unlink(tempPath).catch(() => {});
   
   return cdnUrl;
  }
 
- private extractFileName(): string | null {
-  // Try to extract video ID from the URL
-  const match = this.url.match(/\/([^\/]+)\.mp4$/);
-  if (match) return `twitter_${match[1]}.mp4`;
-  
-  // Try to extract from amplify_video pattern
-  const amplifyMatch = this.url.match(/amplify_video\/(\d+)/);
-  if (amplifyMatch) return `twitter_${amplifyMatch[1]}.mp4`;
-  
-  // Generate based on timestamp
-  return `twitter_video_${Date.now()}.mp4`;
- }
 }

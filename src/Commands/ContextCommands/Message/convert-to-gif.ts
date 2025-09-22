@@ -17,12 +17,28 @@ export default async (interaction: MessageContextMenuCommandInteraction) => {
   const embedWithVideo = message.embeds.find(embed => embed.video?.url);
   
   if (embedWithVideo?.video?.url) {
+   const progressMsg = await interaction.followUp({ 
+    content: '🔄 **Converting Twitter/X video to GIF**\n> Initializing...',
+    fetchReply: true 
+   });
+   
+   const progressUpdates: string[] = [];
+   const updateProgress = async (status: string) => {
+    progressUpdates.push(`> ${status}`);
+    const recentUpdates = progressUpdates.slice(-10);
+    try {
+     await progressMsg.edit({ 
+      content: `🔄 **Converting Twitter/X video to GIF**\n${recentUpdates.join('\n')}` 
+     });
+    } catch (e) {}
+   };
+   
    try {
-    const converter = new TwitterToGIF(embedWithVideo.video.url);
+    const converter = new TwitterToGIF(embedWithVideo.video.url, updateProgress);
     const cdnUrl = await converter.convert();
     
-    await interaction.followUp({
-     content: `✅ Converted Twitter/X video to GIF: ${cdnUrl}`
+    await progressMsg.edit({
+     content: `✅ **Converted Twitter/X video to GIF**: ${cdnUrl}`
     });
     return;
    } catch (error) {
@@ -32,9 +48,8 @@ export default async (interaction: MessageContextMenuCommandInteraction) => {
     if (errorMessage.length > 1900) {
      errorMessage = errorMessage.substring(0, 1900) + '...';
     }
-    await interaction.followUp({
-     content: `❌ Failed to convert Twitter/X video: ${errorMessage}`,
-     ephemeral: true
+    await progressMsg.edit({
+     content: `❌ Failed to convert Twitter/X video: ${errorMessage}`
     });
     return;
    }
@@ -81,12 +96,32 @@ export default async (interaction: MessageContextMenuCommandInteraction) => {
   return;
  }
  
+ const progressMsg = await interaction.followUp({ 
+  content: '🔄 **Converting to GIF**\n> Initializing...',
+  fetchReply: true 
+ });
+ 
+ const progressUpdates: string[] = [];
+ const updateProgress = async (status: string) => {
+  progressUpdates.push(`> ${status}`);
+  const recentUpdates = progressUpdates.slice(-10);
+  try {
+   await progressMsg.edit({ 
+    content: `🔄 **Converting to GIF**\n${recentUpdates.join('\n')}` 
+   });
+  } catch (e) {}
+ };
+ 
  try {
-  const converter = new GIFConverter(url);
+  const options = {
+   onProgress: updateProgress
+  };
+  
+  const converter = new GIFConverter(url, options);
   const cdnUrl = await converter.convert();
   
-  await interaction.followUp({
-   content: `✅ Converted to GIF: ${cdnUrl}`
+  await progressMsg.edit({
+   content: `✅ **Converted to GIF**: ${cdnUrl}`
   });
  } catch (error) {
   console.error('GIF conversion error:', error);
@@ -95,9 +130,8 @@ export default async (interaction: MessageContextMenuCommandInteraction) => {
   if (errorMessage.length > 1900) {
    errorMessage = errorMessage.substring(0, 1900) + '...';
   }
-  await interaction.followUp({
-   content: `❌ Failed to convert to GIF: ${errorMessage}`,
-   ephemeral: true
+  await progressMsg.edit({
+   content: `❌ Failed to convert to GIF: ${errorMessage}`
   });
  }
 };
