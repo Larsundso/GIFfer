@@ -25,18 +25,16 @@ export default async (interaction: MessageContextMenuCommandInteraction) => {
   const embedWithVideo = message.embeds.find((embed) => embed.video?.url);
 
   if (embedWithVideo?.video?.url) {
-   const progressMsg = await interaction.followUp({ 
-    content: '🔄 **Converting Twitter/X video to MP4**\n> Initializing...',
-    flags: MessageFlags.Ephemeral,
-    fetchReply: true 
+   await interaction.editReply({ 
+    content: '🔄 **Converting Twitter/X video to MP4**\n> Initializing...'
    });
    
-   const progressUpdates: string[] = [];
+   const progressUpdates: string[] = ['> Initializing...'];
    const updateProgress = async (status: string) => {
     progressUpdates.push(`> ${status}`);
     const recentUpdates = progressUpdates.slice(-10);
     try {
-     await progressMsg.edit({ 
+     await interaction.editReply({ 
       content: `🔄 **Converting Twitter/X video to MP4**\n${recentUpdates.join('\n')}` 
      });
     } catch (e) {}
@@ -46,7 +44,7 @@ export default async (interaction: MessageContextMenuCommandInteraction) => {
     const converter = new TwitterToMP4(embedWithVideo.video.url, updateProgress);
     const cdnUrl = await converter.convert();
 
-    await progressMsg.edit({
+    await interaction.editReply({
      content: `✅ **Converted Twitter/X video to MP4**: ${cdnUrl}`
     });
     return;
@@ -57,7 +55,7 @@ export default async (interaction: MessageContextMenuCommandInteraction) => {
     if (errorMessage.length > 1900) {
      errorMessage = errorMessage.substring(0, 1900) + '...';
     }
-    await progressMsg.edit({
+    await interaction.editReply({
      content: `❌ Failed to convert Twitter/X video: ${errorMessage}`
     });
     return;
@@ -107,18 +105,16 @@ export default async (interaction: MessageContextMenuCommandInteraction) => {
   return;
  }
 
- const progressMsg = await interaction.followUp({ 
-  content: '🔄 **Converting to MP4**\n> Initializing...',
-  flags: MessageFlags.Ephemeral,
-  fetchReply: true 
+ await interaction.editReply({ 
+  content: '🔄 **Converting to MP4**\n> Initializing...'
  });
  
- const progressUpdates: string[] = [];
+ const progressUpdates: string[] = ['> Initializing...'];
  const updateProgress = async (status: string) => {
   progressUpdates.push(`> ${status}`);
   const recentUpdates = progressUpdates.slice(-10);
   try {
-   await progressMsg.edit({ 
+   await interaction.editReply({ 
     content: `🔄 **Converting to MP4**\n${recentUpdates.join('\n')}` 
    });
   } catch (e) {}
@@ -132,7 +128,7 @@ export default async (interaction: MessageContextMenuCommandInteraction) => {
   const converter = new MP4Converter(url, options);
   const cdnUrl = await converter.convert();
 
-  await progressMsg.edit({
+  await interaction.editReply({
    content: `✅ **Converted to MP4**: ${cdnUrl}`
   });
  } catch (error) {
@@ -142,7 +138,7 @@ export default async (interaction: MessageContextMenuCommandInteraction) => {
   if (errorMessage.length > 1900) {
    errorMessage = errorMessage.substring(0, 1900) + '...';
   }
-  await progressMsg.edit({
+  await interaction.editReply({
    content: `❌ Failed to convert to MP4: ${errorMessage}`
   });
  }
