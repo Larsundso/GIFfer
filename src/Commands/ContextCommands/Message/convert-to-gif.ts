@@ -4,6 +4,11 @@ import TwitterToGIF from '../../../BaseClient/UtilModules/converter/twitter/Twit
 
 export default async (interaction: MessageContextMenuCommandInteraction) => {
  await interaction.deferReply();
+ 
+ // Send initial message
+ await interaction.editReply({
+  content: '🔄 **Converting to GIF**\n> Analyzing message...'
+ });
 
  // Get the message that was right-clicked
  const message = interaction.targetMessage;

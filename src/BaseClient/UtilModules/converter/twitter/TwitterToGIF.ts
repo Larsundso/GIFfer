@@ -8,6 +8,8 @@ import { createWriteStream } from 'fs';
 import GIFConverterBase from '../base/GIFConverterBase.js';
 import Converter from '../base/Converter.js';
 import { uploadToSSH } from '../../sshUpload.js';
+import { compressGifWithILoveImg } from '../../iloveimgCompress.js';
+import { getTempDirSync } from '../../getTempDir.js';
 
 export default class TwitterToGIF extends Converter {
  private gifConverter: GIFConverterBase;
@@ -30,16 +32,21 @@ export default class TwitterToGIF extends Converter {
   if (progress) await progress('Converting video to GIF...');
   const tempGifPath = await this.gifConverter.convertWithAdaptiveResolution(mp4Path, undefined, progress);
   
+  // Compress the GIF with ILoveImg API if credentials are available
+  const tempDir = getTempDirSync();
+  const compressedGifPath = join(tempDir, `compressed_${randomUUID()}.gif`);
+  const finalGifPath = await compressGifWithILoveImg(tempGifPath, compressedGifPath, progress);
+  
   // Generate filename with UUID
   const fileName = `${randomUUID()}.gif`;
   
   // Upload to SSH server and get CDN URL
   if (progress) await progress('Uploading to CDN...');
-  const cdnUrl = await uploadToSSH(tempGifPath, fileName);
+  const cdnUrl = await uploadToSSH(finalGifPath, fileName);
   
   // Cleanup
   if (progress) await progress('Cleaning up temporary files...');
-  await this.cleanup(mp4Path, tempGifPath);
+  await this.cleanup(mp4Path, tempGifPath, finalGifPath === compressedGifPath ? compressedGifPath : undefined);
   
   return cdnUrl;
  }
@@ -58,10 +65,9 @@ export default class TwitterToGIF extends Converter {
  }
 
 
- private async cleanup(mp4Path: string, gifPath: string): Promise<void> {
-  await Promise.all([
-   fs.unlink(mp4Path).catch(() => {}),
-   fs.unlink(gifPath).catch(() => {})
-  ]);
+ private async cleanup(mp4Path: string, gifPath: string, compressedPath?: string): Promise<void> {
+  const filesToDelete = [mp4Path, gifPath];
+  if (compressedPath) filesToDelete.push(compressedPath);
+  await Promise.all(filesToDelete.map(file => fs.unlink(file).catch(() => {})));
  }
 }
