@@ -16,7 +16,7 @@ export default class MP4toMP4 extends MP4FileConverter {
   
   if (progress) await progress('Downloading MP4 file...');
   const buffer = await this.fetchMP4Buffer();
-  const fileName = `${randomUUID()}.mp4`;
+  const fileName = this.options.filename || `${randomUUID()}.mp4`;
 
   if (progress) await progress('Uploading to CDN...');
   // Upload to SSH server and get CDN URL

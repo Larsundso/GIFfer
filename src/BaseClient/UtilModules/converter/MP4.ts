@@ -3,6 +3,7 @@ import YTtoMP4 from './youtube/YTtoMP4.js';
 import MP4toMP4 from './mp4file/MP4toMP4.js';
 
 export interface MP4ConversionOptions {
+ filename?: string;
  onProgress?: (status: string) => Promise<void>;
 }
 

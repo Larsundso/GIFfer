@@ -8,8 +8,7 @@ import { createWriteStream } from 'fs';
 import GIFConverterBase from '../base/GIFConverterBase.js';
 import Converter from '../base/Converter.js';
 import { uploadToSSH } from '../../sshUpload.js';
-import { compressGifWithILoveImg } from '../../iloveimgCompress.js';
-import { getTempDirSync } from '../../getTempDir.js';
+import { compressGifWithILoveImgUrl } from '../../iloveimgCompress.js';
 
 export default class TwitterToGIF extends Converter {
  private gifConverter: GIFConverterBase;
@@ -32,21 +31,26 @@ export default class TwitterToGIF extends Converter {
   if (progress) await progress('Converting video to GIF...');
   const tempGifPath = await this.gifConverter.convertWithAdaptiveResolution(mp4Path, undefined, progress);
   
-  // Compress the GIF with ILoveImg API if credentials are available
-  const tempDir = getTempDirSync();
-  const compressedGifPath = join(tempDir, `compressed_${randomUUID()}.gif`);
-  const finalGifPath = await compressGifWithILoveImg(tempGifPath, compressedGifPath, progress);
+  // Compress the GIF with ILoveImg API and get the download URL
+  if (progress) await progress('Compressing and uploading GIF...');
+  const iloveimgUrl = await compressGifWithILoveImgUrl(tempGifPath, progress);
   
-  // Generate filename with UUID
-  const fileName = `${randomUUID()}.gif`;
-  
-  // Upload to SSH server and get CDN URL
-  if (progress) await progress('Uploading to CDN...');
-  const cdnUrl = await uploadToSSH(finalGifPath, fileName);
+  let cdnUrl: string;
+  if (iloveimgUrl) {
+    // Use ILoveIMG URL directly (no need for SSH upload)
+    cdnUrl = iloveimgUrl;
+    console.log(`[TwitterToGIF] Using ILoveIMG URL: ${cdnUrl}`);
+  } else {
+    // Fallback to SSH upload if ILoveIMG compression failed or not configured
+    const fileName = `${randomUUID()}.gif`;
+    if (progress) await progress('Uploading to CDN...');
+    cdnUrl = await uploadToSSH(tempGifPath, fileName);
+    console.log(`[TwitterToGIF] Using SSH upload fallback: ${cdnUrl}`);
+  }
   
   // Cleanup
   if (progress) await progress('Cleaning up temporary files...');
-  await this.cleanup(mp4Path, tempGifPath, finalGifPath === compressedGifPath ? compressedGifPath : undefined);
+  await this.cleanup(mp4Path, tempGifPath);
   
   return cdnUrl;
  }
@@ -65,9 +69,8 @@ export default class TwitterToGIF extends Converter {
  }
 
 
- private async cleanup(mp4Path: string, gifPath: string, compressedPath?: string): Promise<void> {
+ private async cleanup(mp4Path: string, gifPath: string): Promise<void> {
   const filesToDelete = [mp4Path, gifPath];
-  if (compressedPath) filesToDelete.push(compressedPath);
   await Promise.all(filesToDelete.map(file => fs.unlink(file).catch(() => {})));
  }
 }

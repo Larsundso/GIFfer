@@ -6,6 +6,7 @@ export interface ConversionOptions {
  start?: number | null;
  end?: number | null;
  fps?: number;
+ filename?: string;
  onProgress?: (status: string) => Promise<void>;
 }
 

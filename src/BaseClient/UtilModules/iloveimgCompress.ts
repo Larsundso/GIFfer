@@ -2,6 +2,7 @@ import fetch from 'node-fetch';
 import FormData from 'form-data';
 import { promises as fs } from 'fs';
 import { createReadStream } from 'fs';
+import path from 'path';
 
 interface ILoveImgStartResponse {
   server: string;
@@ -66,6 +67,107 @@ class ILoveImgCompressor {
     this.tokenExpiry = Date.now() + (90 * 60 * 1000);
   }
 
+  private async startTask(): Promise<{ server: string; task: string }> {
+    const response = await fetch('https://api.iloveimg.com/v1/start/compressor', {
+      method: 'GET',
+      headers: {
+        'Authorization': `Bearer ${this.bearerToken}`,
+      },
+    });
+
+    if (!response.ok) {
+      throw new Error(`Failed to start task: ${response.statusText}`);
+    }
+
+    const data = await response.json() as ILoveImgStartResponse;
+    return { server: data.server, task: data.task };
+  }
+
+  async compressGifToUrl(
+    inputPath: string,
+    onProgress?: (status: string) => Promise<void>
+  ): Promise<string | null> {
+    // If API credentials are not configured, return null
+    if (!this.apiKey || !this.apiSecret) {
+      console.log('[ILoveImg] API credentials not configured, skipping compression');
+      return null;
+    }
+
+    try {
+      // Step 1: Authenticate and get token
+      await this.authenticate();
+
+      // Step 2: Start a new task
+      if (onProgress) await onProgress('Starting compression task...');
+      const { server, task } = await this.startTask();
+      
+      // Send the task URL through progress for timeout handling
+      const taskUrl = `https://${server}/v1/download/${task}`;
+      if (onProgress) await onProgress(`ILOVEIMG_TASK_URL:${taskUrl}`);
+
+      // Step 3: Upload file
+      if (onProgress) await onProgress('Uploading GIF to compression service...');
+      const fileBuffer = await fs.readFile(inputPath);
+      const formData = new FormData();
+      formData.append('task', task);
+      formData.append('file', new Blob([fileBuffer as unknown as ArrayBuffer]), path.basename(inputPath));
+
+      const uploadResponse = await fetch(`https://${server}/v1/upload`, {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${this.bearerToken}`,
+        },
+        body: formData,
+      });
+
+      if (!uploadResponse.ok) {
+        throw new Error(`Failed to upload file: ${uploadResponse.statusText}`);
+      }
+
+      // Step 4: Process file (compress)
+      if (onProgress) await onProgress('Compressing GIF...');
+      const processResponse = await fetch(`https://${server}/v1/process`, {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${this.bearerToken}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          task: task,
+          tool: 'compressor',
+          files: [{ filename: path.basename(inputPath) }],
+        }),
+      });
+
+      if (!processResponse.ok) {
+        throw new Error(`Failed to process file: ${processResponse.statusText}`);
+      }
+
+      const processData = await processResponse.json() as ILoveImgProcessResponse;
+      
+      if (processData.status !== 'TaskSuccess') {
+        throw new Error(`Task failed: ${processData.status}`);
+      }
+
+      // Log compression results
+      const originalSize = (processData.filesize / (1024 * 1024)).toFixed(2);
+      const compressedSize = (processData.output_filesize / (1024 * 1024)).toFixed(2);
+      const reduction = ((1 - processData.output_filesize / processData.filesize) * 100).toFixed(1);
+      
+      console.log(`[ILoveImg] Compressed: ${originalSize}MB → ${compressedSize}MB (${reduction}% reduction)`);
+      if (onProgress) await onProgress(`Compressed: ${originalSize}MB → ${compressedSize}MB`);
+
+      // Return the direct download URL (no authentication needed with public download enabled)
+      const downloadUrl = `https://${server}/v1/download/${task}`;
+      console.log(`[ILoveImg] Download URL: ${downloadUrl}`);
+      return downloadUrl;
+    } catch (error) {
+      console.error('[ILoveImg] Compression failed:', error);
+      if (onProgress) await onProgress('Compression failed, using original file');
+      return null;
+    }
+  }
+
   async compressGif(
     inputPath: string,
     outputPath: string,
@@ -84,19 +186,7 @@ class ILoveImgCompressor {
       if (onProgress) await onProgress('Starting image compression...');
 
       // Step 2: Start task and get server
-      const startResponse = await fetch('https://api.ilovepdf.com/v1/start/compressimage/eu', {
-        method: 'GET',
-        headers: {
-          'Authorization': `Bearer ${this.bearerToken}`,
-        },
-      });
-
-      if (!startResponse.ok) {
-        throw new Error(`Failed to start task: ${startResponse.statusText}`);
-      }
-
-      const startData = await startResponse.json() as ILoveImgStartResponse;
-      const { server, task } = startData;
+      const { server, task } = await this.startTask();
       
       if (onProgress) await onProgress('Uploading GIF for compression...');
 
@@ -188,6 +278,13 @@ class ILoveImgCompressor {
 
 // Export singleton instance
 const compressor = new ILoveImgCompressor();
+
+export async function compressGifWithILoveImgUrl(
+  inputPath: string,
+  onProgress?: (status: string) => Promise<void>
+): Promise<string | null> {
+  return compressor.compressGifToUrl(inputPath, onProgress);
+}
 
 export async function compressGifWithILoveImg(
   inputPath: string, 

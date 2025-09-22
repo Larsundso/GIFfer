@@ -4,7 +4,7 @@ import { join } from 'path';
 import GIFConverterBase from '../base/GIFConverterBase.js';
 import YTConverter from '../base/YTConverter.js';
 import { uploadToSSH } from '../../sshUpload.js';
-import { compressGifWithILoveImg } from '../../iloveimgCompress.js';
+import { compressGifWithILoveImgUrl } from '../../iloveimgCompress.js';
 import { getTempDirSync } from '../../getTempDir.js';
 import type { ConversionOptions } from '../GIF.js';
 
@@ -32,26 +32,31 @@ export default class YTtoGIF extends YTConverter {
   if (progress) await progress('Converting video to GIF...');
   const tempGifPath = await this.gifConverter.convertWithAdaptiveResolution(mp4Path, this.options.fps, progress);
 
-  // Compress the GIF with ILoveImg API if credentials are available
-  const tempDir = getTempDirSync();
-  const compressedGifPath = join(tempDir, `compressed_${randomUUID()}.gif`);
-  const finalGifPath = await compressGifWithILoveImg(tempGifPath, compressedGifPath, progress);
-
-  const fileName = `${randomUUID()}.gif`;
+  // Compress the GIF with ILoveImg API and get the download URL
+  if (progress) await progress('Compressing and uploading GIF...');
+  const iloveimgUrl = await compressGifWithILoveImgUrl(tempGifPath, progress);
   
-  if (progress) await progress('Uploading to CDN...');
-  // Upload to SSH server and get CDN URL
-  const cdnUrl = await uploadToSSH(finalGifPath, fileName);
+  let cdnUrl: string;
+  if (iloveimgUrl) {
+    // Use ILoveIMG URL directly (no need for SSH upload)
+    cdnUrl = iloveimgUrl;
+    console.log(`[YTtoGIF] Using ILoveIMG URL: ${cdnUrl}`);
+  } else {
+    // Fallback to SSH upload if ILoveIMG compression failed or not configured
+    const fileName = this.options.filename || `${randomUUID()}.gif`;
+    if (progress) await progress('Uploading to CDN...');
+    cdnUrl = await uploadToSSH(tempGifPath, fileName);
+    console.log(`[YTtoGIF] Using SSH upload fallback: ${cdnUrl}`);
+  }
   
   if (progress) await progress('Cleaning up temporary files...');
-  await this.cleanup(mp4Path, tempGifPath, finalGifPath === compressedGifPath ? compressedGifPath : undefined);
+  await this.cleanup(mp4Path, tempGifPath);
 
   return cdnUrl;
  }
 
- private async cleanup(mp4Path: string, gifPath: string, compressedPath?: string): Promise<void> {
+ private async cleanup(mp4Path: string, gifPath: string): Promise<void> {
   const filesToDelete = [mp4Path, gifPath];
-  if (compressedPath) filesToDelete.push(compressedPath);
   await Promise.all(filesToDelete.map(file => fs.unlink(file).catch(() => {})));
  }
 }

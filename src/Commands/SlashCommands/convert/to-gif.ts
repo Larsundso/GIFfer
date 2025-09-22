@@ -42,9 +42,37 @@ export default async (cmd: ChatInputCommandInteraction) => {
   content: '🔄 **Converting to GIF**\n> Initializing...'
  });
  
+ // Track ILoveIMG task URL when available
+ let iloveimgTaskUrl: string | undefined;
+ 
+ // Set up 14-minute timeout handler
+ let conversionComplete = false;
+ const timeoutHandler = setTimeout(async () => {
+  if (!conversionComplete) {
+   try {
+    const timeoutMessage = iloveimgTaskUrl
+      ? `⏳ **Conversion still in progress**\nThis is taking longer than expected. The file should be available soon at:\n${iloveimgTaskUrl}\n\n⚠️ **Note:** ILoveIMG files expire after a short time. Please download your file immediately when it's ready!`
+      : `⏳ **Conversion still in progress**\nThis is taking longer than expected. The process will continue in the background.\n\n⚠️ **Note:** Please wait for the final link to appear.`;
+    await cmd.editReply({ 
+     content: timeoutMessage
+    });
+   } catch (e) {
+    console.error('[14-minute timeout update failed]', e);
+   }
+  }
+ }, 14 * 60 * 1000); // 14 minutes
+ 
  // Function to update progress
  const updateProgress = async (status: string) => {
   console.log(`[Progress Update] ${status}`);
+  
+  // Check if this is the ILoveIMG task URL
+  if (status.includes('ILOVEIMG_TASK_URL:')) {
+   iloveimgTaskUrl = status.replace('ILOVEIMG_TASK_URL:', '').trim();
+   console.log(`[Progress Update] Captured ILoveIMG URL: ${iloveimgTaskUrl}`);
+   return; // Don't show this internal message to user
+  }
+  
   progressUpdates.push(`> ${status}`);
   // Keep only last 10 updates to avoid message being too long
   const recentUpdates = progressUpdates.slice(-10);
@@ -67,9 +95,13 @@ export default async (cmd: ChatInputCommandInteraction) => {
   };
   
   const cdnUrl = await new GIFConverter(url, options).convert();
-  await cmd.editReply({ content: `✅ **Converted to GIF**: ${cdnUrl}` });
+  conversionComplete = true;
+  clearTimeout(timeoutHandler);
+  await cmd.editReply({ content: `✅ **Converted to GIF**: ${cdnUrl}\n\n⚠️ **Note:** This file will expire from the CDN after 10 minutes. Please download it now!` });
  } catch (error) {
   console.error('[GIF Conversion Error]', error);
+  conversionComplete = true;
+  clearTimeout(timeoutHandler);
   await cmd.editReply({ content: '❌ Failed to convert video to GIF. The video might be too long or the conversion timed out.' });
  }
 };

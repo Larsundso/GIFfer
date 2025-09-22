@@ -19,7 +19,7 @@ export default class YTtoMP4 extends YTConverter {
   const tempPath = await this.downloadYouTubeVideo(undefined, undefined, progress);
   
   try {
-   const fileName = `${randomUUID()}.mp4`;
+   const fileName = this.options.filename || `${randomUUID()}.mp4`;
 
    if (progress) await progress('Uploading to CDN...');
    // Upload to SSH server and get CDN URL

@@ -104,8 +104,35 @@ export default async (interaction: MessageContextMenuCommandInteraction) => {
   content: '🔄 **Converting to GIF**\n> Initializing...'
  });
  
+ // Track ILoveIMG task URL when available
+ let iloveimgTaskUrl: string | undefined;
+ 
+ // Set up 14-minute timeout handler
+ let conversionComplete = false;
+ const timeoutHandler = setTimeout(async () => {
+  if (!conversionComplete) {
+   try {
+    const timeoutMessage = iloveimgTaskUrl
+      ? `⏳ **Conversion still in progress**\nThis is taking longer than expected. The file should be available soon at:\n${iloveimgTaskUrl}\n\n⚠️ **Note:** ILoveIMG files expire after a short time. Please download your file immediately when it's ready!`
+      : `⏳ **Conversion still in progress**\nThis is taking longer than expected. The process will continue in the background.\n\n⚠️ **Note:** Please wait for the final link to appear.`;
+    await interaction.editReply({ 
+     content: timeoutMessage
+    });
+   } catch (e) {
+    console.error('[14-minute timeout update failed]', e);
+   }
+  }
+ }, 14 * 60 * 1000); // 14 minutes
+ 
  const progressUpdates: string[] = ['> Initializing...'];
  const updateProgress = async (status: string) => {
+  // Check if this is the ILoveIMG task URL
+  if (status.includes('ILOVEIMG_TASK_URL:')) {
+   iloveimgTaskUrl = status.replace('ILOVEIMG_TASK_URL:', '').trim();
+   console.log(`[Progress Update] Captured ILoveIMG URL: ${iloveimgTaskUrl}`);
+   return; // Don't show this internal message to user
+  }
+  
   progressUpdates.push(`> ${status}`);
   const recentUpdates = progressUpdates.slice(-10);
   try {
@@ -123,11 +150,15 @@ export default async (interaction: MessageContextMenuCommandInteraction) => {
   const converter = new GIFConverter(url, options);
   const cdnUrl = await converter.convert();
   
+  conversionComplete = true;
+  clearTimeout(timeoutHandler);
   await interaction.editReply({
-   content: `✅ **Converted to GIF**: ${cdnUrl}`
+   content: `✅ **Converted to GIF**: ${cdnUrl}\n\n⚠️ **Note:** This file will expire from the CDN after 10 minutes. Please download it now!`
   });
  } catch (error) {
   console.error('GIF conversion error:', error);
+  conversionComplete = true;
+  clearTimeout(timeoutHandler);
   let errorMessage = error instanceof Error ? error.message : 'Unknown error';
   // Truncate error message if it's too long for Discord
   if (errorMessage.length > 1900) {
