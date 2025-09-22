@@ -83,14 +83,14 @@ RUN cp /app/ssh-config /home/nodejs/.ssh/config && \
 
 # Create wrapper script that copies SSH key as root then runs app as nodejs
 RUN printf '#!/bin/sh\n\
-if [ -f /tmp/docker_hetzner_rsa ]; then\n\
-  cp /tmp/docker_hetzner_rsa /home/nodejs/.ssh/docker_hetzner_rsa\n\
+if [ -f /ssh-keys/docker_hetzner_rsa ]; then\n\
+  cp /ssh-keys/docker_hetzner_rsa /home/nodejs/.ssh/docker_hetzner_rsa\n\
   chown nodejs:nodejs /home/nodejs/.ssh/docker_hetzner_rsa\n\
   chmod 600 /home/nodejs/.ssh/docker_hetzner_rsa\n\
   sed -i "s|/home/nodejs/.ssh/keys/docker_hetzner_rsa|/home/nodejs/.ssh/docker_hetzner_rsa|g" /home/nodejs/.ssh/config\n\
   echo "[SSH] Key copied successfully"\n\
 else\n\
-  echo "[SSH] Warning: SSH key not found at /tmp/docker_hetzner_rsa"\n\
+  echo "[SSH] Warning: SSH key not found at /ssh-keys/docker_hetzner_rsa"\n\
 fi\n\
 exec su -s /bin/sh nodejs -c "node --no-deprecation --no-warnings --experimental-json-modules ./dist/index.js"\n' > /app/entrypoint.sh && \
     chmod +x /app/entrypoint.sh

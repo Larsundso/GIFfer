@@ -18,8 +18,13 @@ export async function uploadToSSH(localPath: string, fileName: string): Promise<
   // Ensure local file exists
   await fs.access(localPath);
 
-  // Check if SSH config exists
-  const sshConfigPath = '/home/nodejs/.ssh/config';
+  // Determine SSH paths based on environment
+  const homeDir = process.env.HOME || '/home/nodejs';
+  const isDocker = await fs.access('/.dockerenv').then(() => true).catch(() => false);
+  
+  const sshConfigPath = isDocker ? '/home/nodejs/.ssh/config' : `${homeDir}/.ssh/config.giffer`;
+  const keyPath = isDocker ? '/home/nodejs/.ssh/docker_hetzner_rsa' : `${homeDir}/.ssh/keys/docker_hetzner_rsa`;
+  
   let scpCommand: string;
 
   try {
@@ -31,9 +36,17 @@ export async function uploadToSSH(localPath: string, fileName: string): Promise<
    // Fallback: Use direct command with cloudflared
    console.log('[SSH Upload] Config not found, using direct cloudflared command');
    const remotePath = `${REMOTE_PATH}/${fileName}`;
-   // Use copied key (created by entrypoint script)
-   const keyPath = '/home/nodejs/.ssh/docker_hetzner_rsa';
-   scpCommand = `scp -o "ProxyCommand=/usr/local/bin/cloudflared access ssh --hostname ${SSH_HOST}" -o "StrictHostKeyChecking=no" -i ${keyPath} "${localPath}" "${SSH_USER}@${SSH_HOST}:${remotePath}"`;
+   
+   // Check if key exists
+   try {
+    await fs.access(keyPath);
+   } catch {
+    throw new Error(`SSH key not found at ${keyPath}`);
+   }
+   
+   // Use correct cloudflared path based on environment
+   const cloudflarePath = isDocker ? '/usr/local/bin/cloudflared' : '/usr/bin/cloudflared';
+   scpCommand = `scp -o "ProxyCommand=${cloudflarePath} access ssh --hostname ${SSH_HOST}" -o "StrictHostKeyChecking=no" -i ${keyPath} "${localPath}" "${SSH_USER}@${SSH_HOST}:${remotePath}"`;
   }
 
   // Execute SCP command
